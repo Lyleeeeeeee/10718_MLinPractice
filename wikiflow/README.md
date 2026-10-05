@@ -4,6 +4,8 @@
 
 本包只整理 2026-10-04 身份修正后的 binary 与最新 **relative continuous** 主线。旧 absolute continuous、诊断融合、新渠道/来源实验、完整 sessions、模型 pickle、原始大数据均未纳入。
 
+[设计文档](docs/design.md) 面向课程队友，逐项说明月度人工检查用途、数据与时间合同、原13特征、模型选择、同池评价及未完成事项；[审阅记录](docs/audit.md) 保留核对证据。
+
 ## 快速复现：真的重训
 
 从仓库根目录运行。推荐 Python **3.13.5**；实际验证环境为 NumPy 2.3.3、SciPy 1.16.2、scikit-learn 1.7.2、threadpoolctl 3.6.0。其他支持 Python 版本可运行，但位级浮点复现需使用记录的环境。
