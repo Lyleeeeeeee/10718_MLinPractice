@@ -1,0 +1,19 @@
+{
+  "packaging_actual_fits": 192,
+  "snapshot_fits": 96,
+  "from_cache_fits": 96,
+  "source_experiment_ledgers_written": false,
+  "parameter_search_fits": 0,
+  "network_acquisition_requests": 0,
+  "fixed_families": [
+    "binary_log13",
+    "binary_hgb12",
+    "relative_ridge12",
+    "relative_hgb12"
+  ],
+  "seed": 718,
+  "threads": 2,
+  "total_refit_seconds": 21.875773000065237,
+  "cached_preparation_seconds": 4.277400417020544,
+  "note": "Separate packaging verification fits; original experiment budgets/ledgers remain untouched."
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "wikiflow.article_identity_correction",
+  "schema_version": 1,
+  "correction_id": "identity_correction_v1_Daniel_homonym_quarantine",
+  "original_catalogue_article_count": 1187,
+  "blocked_article_pageids_until_verified_history_certificate": [
+    79745475
+  ],
+  "historical_preexisting_exclusions": [
+    1164,
+    72417803
+  ],
+  "review_only_pageids": [
+    78522383
+  ],
+  "policy": "Block homonym title slot until verified historical identity; no transfer of pageid62422990 history. Review-only Naevis stays.",
+  "authoritative_source_sha256": "81bb6a1fcc2bfc1318105fdb2a55570bfe5b94ae402ca486385afbf871753be8"
+}

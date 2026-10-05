@@ -1,0 +1,94 @@
+{
+  "seed": 718,
+  "threads": 2,
+  "forecast_months": [
+    "2024-09",
+    "2024-10",
+    "2024-11",
+    "2024-12",
+    "2025-01",
+    "2025-02",
+    "2025-03",
+    "2025-04",
+    "2025-05",
+    "2025-06",
+    "2025-07",
+    "2025-08",
+    "2025-09",
+    "2025-10",
+    "2025-11",
+    "2025-12",
+    "2026-01",
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05",
+    "2026-06",
+    "2026-07",
+    "2026-08"
+  ],
+  "K": [
+    5,
+    10,
+    20,
+    50,
+    100,
+    200
+  ],
+  "binary_models": [
+    {
+      "name": "rolling_Logistic13_jointT_L2_0.01",
+      "family": "Logistic",
+      "lambda": 0.01,
+      "config": {
+        "objective": "mean BCE + .5*lambda*sum(beta²); intercept unpenalized",
+        "max_iterations": 200,
+        "gradient_tolerance": 1e-09,
+        "max_line_search_steps": 60,
+        "Armijo": 0.0001,
+        "initialization": "zero slopes, intercept logit foldTRAIN prevalence; no warmstart/retries"
+      },
+      "complexity_tie_priority": 1,
+      "feature_dim": 13,
+      "only_change": "append jointT_asof margin"
+    },
+    {
+      "name": "HGB12_depth2_30_L2_1",
+      "family": "HGB",
+      "config": {
+        "loss": "log_loss",
+        "learning_rate": 0.03,
+        "max_iter": 30,
+        "l2_regularization": 1.0,
+        "max_bins": 32,
+        "max_features": 1.0,
+        "categorical_features": null,
+        "class_weight": null,
+        "early_stopping": false,
+        "validation_fraction": null,
+        "warm_start": false,
+        "random_state": 718,
+        "max_depth": 2,
+        "max_leaf_nodes": 4
+      },
+      "min_samples_leaf_rule": "max(50,ceil(.10*ownTRAIN_N))",
+      "complexity_tie_priority": 3
+    }
+  ],
+  "relative_ridge_lambda": 0.01,
+  "relative_hgb": {
+    "loss": "squared_error",
+    "learning_rate": 0.03,
+    "max_iter": 30,
+    "max_depth": 2,
+    "max_leaf_nodes": 4,
+    "max_bins": 32,
+    "l2_regularization": 1.0,
+    "max_features": 1.0,
+    "categorical_features": null,
+    "early_stopping": false,
+    "validation_fraction": null,
+    "warm_start": false,
+    "random_state": 718
+  }
+}

@@ -1,0 +1,434 @@
+{
+  "2022-09": {
+    "raw_sha256": "6e9eea11dd9145d8959d24c005c56e373274b30df39fabb6df9a4a29eab1a849",
+    "extract_sha256": "7620c189f8830a5b3c5e6ba1e11fbcffdedef21bc9086f3a15f40d8dcfb8a457",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2022-09/clickstream-enwiki-2022-09.tsv.gz",
+    "downloaded_utc": "2026-10-02T07:37:53.716422+00:00",
+    "last_modified": "Mon, 03 Oct 2022 09:57:15 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2022-10": {
+    "raw_sha256": "322c22b63f134e8a4554fe65eb140a41f7ce3b162433962bdb86f7ad3ce097c6",
+    "extract_sha256": "483056f5639b233c77db0f64196aa20c61f1e1ace531c8115f77b542550a2cdc",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2022-10/clickstream-enwiki-2022-10.tsv.gz",
+    "downloaded_utc": "2026-10-02T07:37:55.983130+00:00",
+    "last_modified": "Thu, 03 Nov 2022 10:53:50 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2022-11": {
+    "raw_sha256": "54b99d7a2800ad2b62fd6a2fc298c1d8d9cc09709d4be9d0bcfe1b5319c1abcf",
+    "extract_sha256": "795caa88b5dd0e6c78745ae9b583590c6476eed860d744c8cb04500b14ae4848",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2022-11/clickstream-enwiki-2022-11.tsv.gz",
+    "downloaded_utc": "2026-10-02T07:40:04.445289+00:00",
+    "last_modified": "Sat, 03 Dec 2022 13:20:23 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2022-12": {
+    "raw_sha256": "a61f0850dc539f01fd2057521dc364fb38f37384f23ab7c4297629bb6823ab7f",
+    "extract_sha256": "34ccd6644ed7fd871dd598c9235231af06e984647e18e69b2eea9b0557574e16",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2022-12/clickstream-enwiki-2022-12.tsv.gz",
+    "downloaded_utc": "2026-10-02T07:40:07.269215+00:00",
+    "last_modified": "Tue, 03 Jan 2023 17:01:51 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2023-02": {
+    "raw_sha256": "839a51de698e9acb140d5bfc6a2b313c7658cdd52909973def4951b2038ce4b1",
+    "extract_sha256": "d10765c0b05e40be37817cd56ad77c03142ecce5f6cd53b681225a9b7a4f3131",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2023-02/clickstream-enwiki-2023-02.tsv.gz",
+    "downloaded_utc": "2026-10-02T07:42:15.839233+00:00",
+    "last_modified": "Fri, 03 Mar 2023 20:42:00 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2023-01": {
+    "raw_sha256": "106ba415846c84ae616fb980d8e525cde40d67ab4ca227fa5037c022d95b95b9",
+    "extract_sha256": "0d784a01fcf34d4c5bb483f429b6e0a49ec891a0a663aeec49b0432db67b1de3",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2023-01/clickstream-enwiki-2023-01.tsv.gz",
+    "downloaded_utc": "2026-10-02T07:42:19.285689+00:00",
+    "last_modified": "Fri, 03 Feb 2023 13:02:49 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2023-03": {
+    "raw_sha256": "4bcd7aeacb922f4f6bc7724b82023895bffbb08935056f8ad0e1a8a746d15c9c",
+    "extract_sha256": "1893bb69710a6fdad299a9bc12058de27124a52ed009791844caf081112068db",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2023-03/clickstream-enwiki-2023-03.tsv.gz",
+    "downloaded_utc": "2026-10-02T07:44:27.436832+00:00",
+    "last_modified": "Mon, 03 Apr 2023 05:04:41 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2023-04": {
+    "raw_sha256": "0e97d09045d0b7a73f5d10c24826c01fa17b3a28344701de767ba72c3bb3211d",
+    "extract_sha256": "227d6829739ea520d1f0fff01c66b15546cb5fd984a9f48174c0c072f6b93cdf",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2023-04/clickstream-enwiki-2023-04.tsv.gz",
+    "downloaded_utc": "2026-10-02T07:44:38.441630+00:00",
+    "last_modified": "Wed, 03 May 2023 04:58:37 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2023-05": {
+    "raw_sha256": "e2c5d3eac35ee0d7fab2efa00943b8d8007a61b73a1167de8bd5e70349c0dc90",
+    "extract_sha256": "832a631fb7ebf4f14cadc532197cb20b3917d6c0915ec46290eb85482c3856c4",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2023-05/clickstream-enwiki-2023-05.tsv.gz",
+    "downloaded_utc": "2026-10-02T07:46:38.618596+00:00",
+    "last_modified": "Sat, 03 Jun 2023 08:42:16 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2023-06": {
+    "raw_sha256": "c29e7888c8cdb7eeb14113a21dca9dbfd51601a58b5d2ae19733fb9425742560",
+    "extract_sha256": "e15756ba630f016c9cf8e1087c51ee7d49c76d224e5d0aa9081d19718c37f62e",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2023-06/clickstream-enwiki-2023-06.tsv.gz",
+    "downloaded_utc": "2026-10-02T07:46:49.301918+00:00",
+    "last_modified": "Mon, 03 Jul 2023 06:56:27 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2023-07": {
+    "raw_sha256": "29d92479a7021aa141bc55ba571aa982616051f2e1dece99b7e0ccae3bf52884",
+    "extract_sha256": "f31f878e5802fd8f40c615377713599602ad01d7a8bd9ab4be0a96ff7e925c40",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2023-07/clickstream-enwiki-2023-07.tsv.gz",
+    "downloaded_utc": "2026-10-02T07:48:53.763987+00:00",
+    "last_modified": "Thu, 03 Aug 2023 02:53:25 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2023-08": {
+    "raw_sha256": "cfb64835a66a3082dbbc578820e349cd81258b58104efbbbc9744345c1be077e",
+    "extract_sha256": "ef5c2bfe17c76bfd5c394f8338427fb1b9af15e954a1f912da3434198662f3ba",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2023-08/clickstream-enwiki-2023-08.tsv.gz",
+    "downloaded_utc": "2026-10-02T07:49:03.007016+00:00",
+    "last_modified": "Sun, 03 Sep 2023 02:56:37 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2023-09": {
+    "raw_sha256": "c65d86e540560c7b20f497c6838d7a0332ab47267a48cef954b35eedf09bbdac",
+    "extract_sha256": "f9ff6f98c6e2fc3e727c567e33ee010dd52496ded0e8cf0c26ed7c406154ecfe",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2023-09/clickstream-enwiki-2023-09.tsv.gz",
+    "downloaded_utc": "2026-10-02T07:51:14.122007+00:00",
+    "last_modified": "Tue, 03 Oct 2023 06:50:08 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2023-10": {
+    "raw_sha256": "f397735e3db82988897722fe60050708b46fe5e895405ca3441ed63763f89845",
+    "extract_sha256": "f2d53e890f1193f8f68ec878e6ae19c2c5077242ac6fbcaf4f2977ad3382775b",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2023-10/clickstream-enwiki-2023-10.tsv.gz",
+    "downloaded_utc": "2026-10-02T07:51:23.447897+00:00",
+    "last_modified": "Fri, 03 Nov 2023 03:19:00 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2023-11": {
+    "raw_sha256": "877fd5042d29b0f13d6a37d6165e5e95498fa8c1f32f07c2aea0d5dfcfcb6591",
+    "extract_sha256": "e22903c76be365aefd49e14f254a1fd02d67e48275c7cdb0c1b57150fcae8999",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2023-11/clickstream-enwiki-2023-11.tsv.gz",
+    "downloaded_utc": "2026-10-02T07:53:25.337259+00:00",
+    "last_modified": "Tue, 19 Dec 2023 22:29:27 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2023-12": {
+    "raw_sha256": "90f585ae9a426489fdb8a358ab8dd6469dda3287fcc55b78206e6f4e40f9887d",
+    "extract_sha256": "04ba6df05c4024fa7a57a7456d71f2e73ad8b0ed006863706db702b0a7bdd925",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2023-12/clickstream-enwiki-2023-12.tsv.gz",
+    "downloaded_utc": "2026-10-02T07:53:34.485411+00:00",
+    "last_modified": "Wed, 03 Jan 2024 10:38:58 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2024-02": {
+    "raw_sha256": "8c1cf67ad9c3072d66fc31341ed44c7b97ac4270c4adabdadaca8c70d5dc1059",
+    "extract_sha256": "9790efdfb95ffe0f5df30ec7fde172a9cab38ae0731dd68472507cd5272557ed",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2024-02/clickstream-enwiki-2024-02.tsv.gz",
+    "downloaded_utc": "2026-10-02T07:55:31.243456+00:00",
+    "last_modified": "Sun, 03 Mar 2024 00:56:23 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2024-01": {
+    "raw_sha256": "599c6b5035cfa498cd0e7f6bbb0403a540441341cbc1b794ac977d8a697dba2b",
+    "extract_sha256": "1d2e674303d2f0e71ad453143ba5b1b87f279ef55f7b80aebb55d385d9dfe4d1",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2024-01/clickstream-enwiki-2024-01.tsv.gz",
+    "downloaded_utc": "2026-10-02T07:55:30.972251+00:00",
+    "last_modified": "Wed, 07 Feb 2024 15:02:18 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2024-03": {
+    "raw_sha256": "81e3d8750213d38b1f8da90b92db1ada1c5970e24e56253ff19c35ad2d1e4789",
+    "extract_sha256": "82d1f5c53b5fc71c8b6acca512b35e26ad7c30f5aa0857bbd96d838952cdc8cb",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2024-03/clickstream-enwiki-2024-03.tsv.gz",
+    "downloaded_utc": "2026-10-02T07:57:46.325941+00:00",
+    "last_modified": "Wed, 03 Apr 2024 03:07:01 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2024-04": {
+    "raw_sha256": "deb3858aa7ca0874570b6320985d7f502d4443f23d6a3e45182e0321f0236827",
+    "extract_sha256": "e040278faf3bee59bd9dfe194c8adf2bcfdd23ce4af453e156bb37e6180e2aaf",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2024-04/clickstream-enwiki-2024-04.tsv.gz",
+    "downloaded_utc": "2026-10-02T07:57:59.528228+00:00",
+    "last_modified": "Tue, 28 May 2024 08:20:37 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2024-05": {
+    "raw_sha256": "36bdbfa9eed93aaf63085c2659e21b2b46f9a363f6f0a055999774f2c5eca477",
+    "extract_sha256": "3d4fca5b5c435a871e9450c12287889e5cd6bcd9326e4b4f341163633ddefe46",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2024-05/clickstream-enwiki-2024-05.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:00:03.662130+00:00",
+    "last_modified": "Mon, 03 Jun 2024 06:33:25 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2024-06": {
+    "raw_sha256": "9d6bfde3b472e29e6fce41b7a7230587d3445fbe90fdbaf85723a83b9a7ae2ff",
+    "extract_sha256": "8cc7d55c8f53c038f035848f310ae13cff0a69e6eae9d2a9f90a26f29a9b32e0",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2024-06/clickstream-enwiki-2024-06.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:00:11.646870+00:00",
+    "last_modified": "Thu, 04 Jul 2024 22:22:31 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2024-07": {
+    "raw_sha256": "c75439a0311907ff1be32c865d2abd6b1bc7b52d0ad32d8733bbb38e0e6e5800",
+    "extract_sha256": "6f4699146bf9006052f0309c260e537652e62dfaa0b58a419f507f98f35126de",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2024-07/clickstream-enwiki-2024-07.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:02:21.002907+00:00",
+    "last_modified": "Thu, 08 Aug 2024 16:12:55 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2024-08": {
+    "raw_sha256": "3f7e753c47637fe743f2185712e0fe7abb72fb5b664ec1e1e5424b0705e35c38",
+    "extract_sha256": "2f7942e505cebbb8523b949fef80cf5b431211c784462fe493ebb07c32ce37e7",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2024-08/clickstream-enwiki-2024-08.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:02:30.179624+00:00",
+    "last_modified": "Mon, 16 Dec 2024 11:57:40 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2024-09": {
+    "raw_sha256": "091a8e3bdf1e5d5206ac524d5d82587a982a70a625dda75b45aa62ca14fa8caa",
+    "extract_sha256": "d479a4ebf3fb8c77450b40b76ddf90e7b1861c42ad8e15a794198799720ab782",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2024-09/clickstream-enwiki-2024-09.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:04:39.790863+00:00",
+    "last_modified": "Mon, 16 Dec 2024 13:57:46 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2024-10": {
+    "raw_sha256": "bdf7d60e7cc37678dce324eafe0e0743d991749e349805b3b22ec0eba4e68fb9",
+    "extract_sha256": "2090880a2cae2921d2b97ba8050047c61d6d8ff973befd9203c42b8e26279f0f",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2024-10/clickstream-enwiki-2024-10.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:04:53.908118+00:00",
+    "last_modified": "Mon, 16 Dec 2024 12:09:57 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2024-11": {
+    "raw_sha256": "4e1f00e9a78715dfa9692c065397ab73979023a056ce0c9471c4ee2f5dd93c07",
+    "extract_sha256": "c1097c781f628b8623b07a41c7e187d6ca6d04368db71ba84c5df1a5dbf56123",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2024-11/clickstream-enwiki-2024-11.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:06:47.764197+00:00",
+    "last_modified": "Mon, 16 Dec 2024 12:51:43 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2024-12": {
+    "raw_sha256": "f9185e326aa6b3329e8d83f037818252100d4fef86cd3551f9546de7ff372c4b",
+    "extract_sha256": "be8b4d0cbb09392d37b252114b8b4c1bd8c59bbd821bb0e1c3606dfd0feb9bff",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2024-12/clickstream-enwiki-2024-12.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:07:05.843840+00:00",
+    "last_modified": "Fri, 03 Jan 2025 22:52:13 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2025-01": {
+    "raw_sha256": "8dedd71b0a65a50358a506b35f04bdcda6f954e3874ce07ed88981e834715467",
+    "extract_sha256": "494174966ed727354f645cdc519f92b86081164aada2791a1b78ca98c7db4de5",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2025-01/clickstream-enwiki-2025-01.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:09:07.686502+00:00",
+    "last_modified": "Mon, 03 Feb 2025 12:32:45 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2025-02": {
+    "raw_sha256": "cf7e6e541e67d2bcca7089de4347ec955b2c2d6fdde951f396fee4e620519d5d",
+    "extract_sha256": "baebe40fdb7aef3e99d6511d542920c7be0bdf1c0e80b513b333cf3e280bbb9c",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2025-02/clickstream-enwiki-2025-02.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:09:26.683212+00:00",
+    "last_modified": "Wed, 12 Mar 2025 20:24:17 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2025-04": {
+    "raw_sha256": "ec39defd8590080dca6a49f7d4724587201881fda408b6a784feef25e11711f5",
+    "extract_sha256": "408351a02ef7ddc907ffa1e4e3849fa223cf8ee3c0a6fd62bc587374a80bc6e7",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2025-04/clickstream-enwiki-2025-04.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:11:27.701813+00:00",
+    "last_modified": "Thu, 02 Oct 2025 17:27:07 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2025-03": {
+    "raw_sha256": "7ddc238135ff72e586d52f21ec66189804f777c35a102771384cd67bfa316b1b",
+    "extract_sha256": "fe709fe0d2c3b2be08349d7707fe145201baad29d3025ad9d3572b2cc27f7914",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2025-03/clickstream-enwiki-2025-03.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:11:33.424210+00:00",
+    "last_modified": "Thu, 03 Apr 2025 14:46:26 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2025-06": {
+    "raw_sha256": "d7d66023fbd29d4e3a5638ac4914492effad58793459d4f2da5e4236ae7f4eb8",
+    "extract_sha256": "b92c3e05054cef61ba3f4e4b9c9506b1649183fbcaa4bed8116628bd1fa69646",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2025-06/clickstream-enwiki-2025-06.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:13:49.022161+00:00",
+    "last_modified": "Fri, 03 Oct 2025 06:19:10 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2025-05": {
+    "raw_sha256": "4cca3369d596ebfd7ae5339e3221781fa9d436fc497aa500ba49ada7c8e63ffa",
+    "extract_sha256": "45a6d93f983a2107384780dbc1bdfcd9c2c71fa4c6b943155c6b5ce61f064bd7",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2025-05/clickstream-enwiki-2025-05.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:13:53.611797+00:00",
+    "last_modified": "Thu, 02 Oct 2025 23:07:23 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2025-07": {
+    "raw_sha256": "42ea1ba893eb18776503b507432b2115ba768184d84b5c4fcd9d4295ec2ad2f3",
+    "extract_sha256": "3e234476e9dda3d055da163be796f7dece7ca14d07c073a925f66091bbcf9056",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2025-07/clickstream-enwiki-2025-07.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:16:09.447184+00:00",
+    "last_modified": "Sun, 05 Oct 2025 19:19:18 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2025-08": {
+    "raw_sha256": "600d7b63e8d57ed1afc0133edfe826473b03877e5978f8fc60c85ca032b0b44b",
+    "extract_sha256": "bc26ac0b1d3beb1d79a6aadf470f177d6fc253161ff0c94b526c0b6cbc5f591e",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2025-08/clickstream-enwiki-2025-08.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:16:27.046769+00:00",
+    "last_modified": "Tue, 07 Oct 2025 20:27:15 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2025-09": {
+    "raw_sha256": "6316ba3b232e8b899c647c6a78ef9cf41bedce6d11d548929d54f228e9c5f64a",
+    "extract_sha256": "e7c583fd399262dc908cc76a79f56b025dfb10f348fd7afeb88798525786b1d3",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2025-09/clickstream-enwiki-2025-09.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:18:20.241833+00:00",
+    "last_modified": "Fri, 03 Oct 2025 08:26:03 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2025-10": {
+    "raw_sha256": "5d86dd16014a853fabdf4ba4692670661e9c147ec548124eccb718c354aa58f5",
+    "extract_sha256": "3e55964b7aea4d7a1e73cfdda22065e4a77aaae863ccf7a01d07fba771863a69",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2025-10/clickstream-enwiki-2025-10.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:18:52.469650+00:00",
+    "last_modified": "Wed, 05 Nov 2025 08:34:57 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2025-11": {
+    "raw_sha256": "c453b7ceb4ef047813dbce82002ee98eb79b92188d17fa4a0360a1585e1a1926",
+    "extract_sha256": "70408f845cb0fb669f3b6801d6d8ad018fb27a5ec17b07cd32552c43ff0df9a5",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2025-11/clickstream-enwiki-2025-11.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:20:36.138384+00:00",
+    "last_modified": "Wed, 03 Dec 2025 22:35:19 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2025-12": {
+    "raw_sha256": "bbe6ec4fcafc01ac01e727e6a424412dd1af11cbb4e0534be0592714c13eb3cc",
+    "extract_sha256": "2724205dbbe7b5c6587b4713c48ab399d8ba124e51d004a85506e8203f8149b5",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2025-12/clickstream-enwiki-2025-12.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:21:02.728318+00:00",
+    "last_modified": "Mon, 11 May 2026 15:06:11 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2026-01": {
+    "raw_sha256": "6eb371338856045db86905a71e5b3958299bdcb5c0321c8842669eac933dbf33",
+    "extract_sha256": "626f30ca208df6afeb92af27a18ce6615a49251877b2ebef2dc2d4ab35cfd22a",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2026-01/clickstream-enwiki-2026-01.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:22:54.926883+00:00",
+    "last_modified": "Mon, 11 May 2026 15:36:25 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2026-02": {
+    "raw_sha256": "0900dbe2c257049c6470701ca37bd1a811675db88b9fd779b560fe9b8100d835",
+    "extract_sha256": "fbd88b3cce71022f5ca7b6581d963476298fbb8036432f70b9a9e49a2fd23e29",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2026-02/clickstream-enwiki-2026-02.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:23:02.990787+00:00",
+    "last_modified": "Mon, 11 May 2026 16:12:54 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2026-03": {
+    "raw_sha256": "b0cd2ab4a05c166c4ae0903c9a398bff63d4db5f08df65de74f530743d53b744",
+    "extract_sha256": "eb1437f7ead1ac5e2320e7438dfff409ce0452cb01dc4703ea96d626f362da27",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2026-03/clickstream-enwiki-2026-03.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:25:11.630164+00:00",
+    "last_modified": "Mon, 11 May 2026 16:40:11 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2026-04": {
+    "raw_sha256": "5d4cd51a9cce207dfee9579acdecc08677e7dd752a0984f409dcd35a74bea0cf",
+    "extract_sha256": "cc2ca09f86680fcf4a3dc5515f4c6807ceed3566ffa7400931f7bdd53fd7e6fd",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2026-04/clickstream-enwiki-2026-04.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:25:19.002996+00:00",
+    "last_modified": "Mon, 11 May 2026 17:25:24 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2026-05": {
+    "raw_sha256": "68206c5901ecab82c17e10d70e87047c262b52153242593dc266712079ab2fc9",
+    "extract_sha256": "9a929d2c9703e5938e4b0119ade81f82810afd1933de85ef6e2a8bc7238930b7",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2026-05/clickstream-enwiki-2026-05.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:27:28.604294+00:00",
+    "last_modified": "Thu, 11 Jun 2026 16:50:16 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2026-06": {
+    "raw_sha256": "8eed328acd48087fc49c1f09af9f3c1617e56acb17e42498c5cd5ea086ee9f43",
+    "extract_sha256": "a509b068bc6587a9e2de27987e9b60c64351f4101899b61c40e2e59a28e4edea",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2026-06/clickstream-enwiki-2026-06.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:27:32.022221+00:00",
+    "last_modified": "Fri, 03 Jul 2026 18:27:51 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2026-07": {
+    "raw_sha256": "9e4781bdb87be895a71f244e8e307adf7dd15620de5d646827aa5da41d4ab989",
+    "extract_sha256": "d2fb00b328031472b4444c8ac83aad3e787a07486e171bac5a0288249fab3be3",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2026-07/clickstream-enwiki-2026-07.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:29:54.486645+00:00",
+    "last_modified": "Wed, 05 Aug 2026 09:21:55 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  },
+  "2026-08": {
+    "raw_sha256": "95a7b25e7d2e97f514d2f13d66d022f71d8af52364a491bbc048d11874d92cfd",
+    "extract_sha256": "a59f2e85f49870e88769ccba3feb6cdd703f671aa026ae61bb86851d8ab44ce3",
+    "origin": "fresh_official_dump",
+    "url": "https://dumps.wikimedia.org/other/clickstream/2026-08/clickstream-enwiki-2026-08.tsv.gz",
+    "downloaded_utc": "2026-10-02T08:29:55.282590+00:00",
+    "last_modified": "Thu, 03 Sep 2026 10:27:56 GMT",
+    "topic_sha256": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820"
+  }
+}
