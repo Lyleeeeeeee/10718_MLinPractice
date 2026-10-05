@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "parent_commit": "ccf65a63287330870b43b7cb563d4cd20348d3a8",
+  "identity_version": "v1",
+  "labels_exactly_unchanged": true,
+  "candidate_keys_and_order_exactly_unchanged": true,
+  "expanded_rows": 11080,
+  "candidate_rows": 5388,
+  "all_retained_row_values_exactly_unchanged": true,
+  "retained_prediction_values_exactly_unchanged": true,
+  "retained_monthly_reference_values_exactly_unchanged": true,
+  "display_schema_change": "wikiflow.course.panel.v1; evaluation_eligible_asof replaces a legacy field name",
+  "removed_unused_rule_forecast_rows": 5388,
+  "retained_score_methods": [
+    "volume",
+    "binary_log13",
+    "relative_ridge12"
+  ],
+  "retained_task_method_pairs": [
+    [
+      "binary",
+      "binary_log13"
+    ],
+    [
+      "binary",
+      "volume"
+    ],
+    [
+      "relative",
+      "relative_ridge12"
+    ],
+    [
+      "relative",
+      "volume"
+    ]
+  ],
+  "monthly_reference_rows": 576,
+  "sealed_holdout_read": false,
+  "source_experiment_files_written": 0
+}

@@ -75,8 +75,7 @@ def article_features(article,cutoff,volumes,pageviews):
               math.log1p(median),sum((i-2.5)*r for i,r in enumerate(rates))/17.5,math.log1p(seasonal),int(missing),
               math.log1p(sum(daily[d] for d in dates)/len(dates)) if complete else None,trend,int(not complete),
               math.log1p(sigma),math.log1p(forecast)-math.log1p(bound)]
-    rules=dict(daily_persistence=forecast,PV_trend=forecast*math.exp(trend) if complete else forecast)
-    return features,bound,rules
+    return features,bound
 
 
 def build_panel(mapping,volumes,pageviews,revisions,coverage,start='2023-10',end='2026-08'):
@@ -88,7 +87,7 @@ def build_panel(mapping,volumes,pageviews,revisions,coverage,start='2023-10',end
             if pid in BLOCKED:continue
             current=volumes.get(cut,{}).get(article)
             if current is None or current<100 or not all(article in volumes.get(m,{}) for m in history):continue
-            features,bound,rules=article_features(article,cut,volumes,pageviews)
+            features,bound=article_features(article,cut,volumes,pageviews)
             precurrent=historical_bound([volumes[m][article]/days(m) for m in history[:-1]],days(cut))
             if current/days(cut)>bound/days(target) or current>precurrent:continue
             activity=metadata_activity(revisions.get(str(pid),[]),coverage.get(str(pid),[]),target)
@@ -97,15 +96,15 @@ def build_panel(mapping,volumes,pageviews,revisions,coverage,start='2023-10',end
             row=dict(key=f'{target}:{pid}',pageid=pid,article=article,target_month=target,cutoff_month=cut,
                      current_count=current,U_count=bound,current_precurrent_U=precurrent,features=features,
                      editor_activity_asof=activity,metadata_quality_complete=True,
-                     max_feature_date_declared=cut+f'-{days(cut):02d}',rule_forecasts=rules)
-            # Preserve the v2 label preparation's multiplication order. The Log13
+                     max_feature_date_declared=cut+f'-{days(cut):02d}')
+            # Preserve the relative target preparation's multiplication order. The Log13
             # input margin separately uses core.joint_threshold's frozen recipe.
             row['effective_event_U_asof']=max(bound,1.25*current*days(target)/days(cut))
-            row['v2_evaluation_eligible_asof']=candidate_allowed(row)
+            row['evaluation_eligible_asof']=candidate_allowed(row)
             rows.append(row);labels[row['key']]=make_label(volumes.get(target,{}).get(article),row['effective_event_U_asof'])
-            if target>='2024-09' and row['v2_evaluation_eligible_asof']:evaluation_keys.append(row['key'])
+            if target>='2024-09' and row['evaluation_eligible_asof']:evaluation_keys.append(row['key'])
     evaluation_keys.sort(key=lambda key:(key[:7],int(key.split(':')[1])))
-    return dict(schema='wikiflow.corrected.panel.v1',rows=rows,labels=labels,
+    return dict(schema='wikiflow.course.panel.v1',rows=rows,labels=labels,
                 evaluation_keys=evaluation_keys,feature_names=FEATURES,
                 preparation=dict(unknown_quality_rows_excluded=unknown_quality,canonical_only=True,
                                  catalogue_count=len(mapping),label_release_delay_verified=False))

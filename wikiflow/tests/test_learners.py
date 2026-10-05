@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from wikiflow.learners import logistic_objective, fit_logistic, model_parameters
+from wikiflow.learners import MODELS, logistic_objective, fit_logistic, model_parameters
 
 class LearnerChecks(unittest.TestCase):
     def test_newton_matches_finite_difference_and_stationary_point(self):
@@ -19,11 +19,10 @@ class LearnerChecks(unittest.TestCase):
 
     def test_configs_depend_only_on_train_n(self):
         self.assertEqual(model_parameters('relative_ridge12',1000)['alpha'],10.)
-        for name in ['binary_hgb12','relative_hgb12']:
-            p=model_parameters(name,503)
-            self.assertEqual(p['min_samples_leaf'],51)
-            self.assertEqual(p['random_state'],718)
-            self.assertEqual(p['max_iter'],30)
-            self.assertFalse(p['early_stopping'])
+        self.assertEqual(model_parameters('relative_ridge12',503)['alpha'],5.03)
+
+    def test_course_learners_are_explicit_and_closed(self):
+        self.assertEqual(MODELS,['binary_log13','relative_ridge12'])
+        with self.assertRaises(ValueError):model_parameters('unsupported_model',1000)
 
 if __name__=='__main__':unittest.main()

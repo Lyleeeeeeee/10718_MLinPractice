@@ -11,7 +11,7 @@ def row(month='2024-09', pid=1):
                 cutoff_month=shift(month,-1), current_count=100, U_count=200,
                 current_precurrent_U=200, effective_event_U_asof=200,
                 features=[1.,None], max_feature_date_declared=shift(month,-1)+'-28',
-                metadata_quality_complete=True, v2_evaluation_eligible_asof=True,
+                metadata_quality_complete=True, evaluation_eligible_asof=True,
                 editor_activity_asof=dict(max_abs_nonminor=499,cumulative_abs_nonminor=999,coverage_complete=True))
 
 
@@ -37,7 +37,7 @@ class Contracts(unittest.TestCase):
             self.assertFalse(candidate_allowed(dict(r,**change)))
 
     def test_future_unknown_and_edit_filter_never_enter_train(self):
-        a=row('2024-08');a['v2_evaluation_eligible_asof']=False
+        a=row('2024-08');a['evaluation_eligible_asof']=False
         b=row();unknown=row('2024-07',2)
         labels={a['key']:dict(known=True),b['key']:dict(known=True),unknown['key']:dict(known=False)}
         self.assertEqual(select_training([a,b,unknown],labels,'2024-09'),[a])

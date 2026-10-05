@@ -4,7 +4,6 @@ import csv
 import gzip
 import hashlib
 import json
-import math
 from pathlib import Path
 import platform
 import time
@@ -20,8 +19,8 @@ from .core import (BLOCKED_PAGEIDS,HISTORICAL_EXCLUSIONS,FORECASTS,KS,aggregate,
 from .learners import MODELS,fit_predict
 
 ROOT=Path(__file__).resolve().parents[2]
-BINARY=['volume','strong_cs','cs_momentum','pv_u','pv_t','binary_log13','binary_hgb12']
-RELATIVE=['volume','relative_ridge12','relative_hgb12','strong_cs','cs_momentum_clipped','cs_momentum','pv_t','pv_u']
+BINARY=['volume','binary_log13']
+RELATIVE=['volume','relative_ridge12']
 SCORE_TOLERANCE=1e-10
 METRIC_TOLERANCE=5e-12
 
@@ -44,7 +43,7 @@ def digest(values):
 
 
 def validate_panel(panel):
-    if panel['schema']!='wikiflow.corrected.panel.v1':raise ValueError('Unsupported panel schema')
+    if panel['schema']!='wikiflow.course.panel.v1':raise ValueError('Unsupported panel schema')
     rows=panel['rows'];labels=panel['labels'];keys=[r['key'] for r in rows]
     if len(set(keys))!=len(keys) or set(labels)!=set(keys):raise ValueError('Duplicate or mismatched label keys')
     for r in rows:
@@ -83,13 +82,11 @@ def verify_prepared(canonical,rebuilt):
         raise ValueError('Prepared keys/order differ from corrected benchmark')
     if canonical['labels']!=rebuilt['labels']:
         raise ValueError('Prepared labels differ from corrected benchmark')
-    maxerror=0.;evaluation_keys=set(canonical['evaluation_keys'])
+    maxerror=0.
     for old,new in zip(canonical['rows'],rebuilt['rows']):
-        for field in ['pageid','article','target_month','cutoff_month','current_count','metadata_quality_complete','editor_activity_asof','v2_evaluation_eligible_asof','max_feature_date_declared']:
+        for field in ['pageid','article','target_month','cutoff_month','current_count','metadata_quality_complete','editor_activity_asof','evaluation_eligible_asof','max_feature_date_declared']:
             if old[field]!=new[field]:raise ValueError(f'Prepared identity/eligibility changed: {field}')
         pairs=list(zip(old['features'],new['features']))+[(old[f],new[f]) for f in ['U_count','current_precurrent_U','effective_event_U_asof']]
-        if old['key'] in evaluation_keys:
-            pairs += [(old['rule_forecasts'][f],new['rule_forecasts'][f]) for f in ['daily_persistence','PV_trend']]
         for a,b in pairs:
             if a is None or b is None:
                 if a!=b:raise ValueError('Prepared missingness changed')
@@ -99,19 +96,7 @@ def verify_prepared(canonical,rebuilt):
 
 
 def baseline_scores(candidates):
-    scores={n:{} for n in ['volume','strong_cs','cs_momentum','cs_momentum_clipped','pv_u','pv_t']}
-    for r in candidates:
-        key=r['key'];T=r['effective_event_U_asof'];D=days(r['target_month'])
-        x=r['current_count']/days(r['cutoff_month'])*D
-        current=math.expm1(r['features'][0]);previous=math.expm1(r['features'][1]);ratio=current/previous
-        forecasts=r['rule_forecasts']
-        vals=dict(volume=float(r['current_count']),strong_cs=math.log1p(x)-math.log1p(T),
-                  cs_momentum=math.log1p(current*ratio*D)-math.log1p(T),
-                  cs_momentum_clipped=math.log1p(current*min(2.,max(.5,ratio))*D)-math.log1p(T),
-                  pv_u=math.log1p(forecasts['PV_trend'])-math.log1p(r['U_count']),
-                  pv_t=math.log1p(forecasts['PV_trend'])-math.log1p(T))
-        for name,value in vals.items():scores[name][key]=value
-    return scores
+    return {'volume':{r['key']:float(r['current_count']) for r in candidates}}
 
 
 def evaluate(candidates,labels,scores):
@@ -131,6 +116,9 @@ def evaluate(candidates,labels,scores):
 
 def verify_monthly(monthly,expected):
     lookup={(r['task'],r['method'],r['month'],r['K']):r for r in monthly}
+    reference_keys={(r['task'],r['method'],r['month'],r['K']) for r in expected}
+    if len(lookup)!=len(monthly) or len(reference_keys)!=len(expected) or set(lookup)!=reference_keys:
+        raise ValueError('Monthly metric support differs from frozen reference')
     maxerror=0.
     for ref in expected:
         q=lookup[ref['task'],ref['method'],ref['month'],ref['K']]
@@ -163,13 +151,13 @@ def run(mode,output,prepared_panel=None):
     rows=panel['rows'];labels=panel['labels'];ca=[rowmap[k] for k in panel['evaluation_keys']]
     if len(rows)!=11080 or len(ca)!=5388:raise ValueError('Benchmark support changed')
     expected=load(ROOT/'data/expected_scores.json.gz');folds=load(ROOT/'data/folds.json')
+    if set(expected)!=set(BINARY+RELATIVE):raise ValueError('Unexpected course score methods')
+    if any(set(ss)!=set(panel['evaluation_keys']) for ss in expected.values()):
+        raise ValueError('Score support differs from shared candidates')
     scores=baseline_scores(ca);baseline_error={}
     for name,ss in scores.items():
         baseline_error[name]=max(abs(v-expected[name][key]) for key,v in ss.items())
         if baseline_error[name]>1e-12:raise ValueError(f'Baseline formula mismatch: {name}')
-        # Legacy arithmetic differs at roundoff in near ties. Formula is rechecked above;
-        # retain canonical baseline floats as the original evaluators did, and disclose it.
-        scores[name]=expected[name]
     output.mkdir(parents=True)
     trace=[];prediction_error={};rank_match={};scaler_error=0.
     if mode=='refit':
@@ -181,7 +169,7 @@ def run(mode,output,prepared_panel=None):
                     raise ValueError('Own mature TRAIN or evaluation keys changed')
                 for name in MODELS:
                     x,z,prep=preprocess(train,candidates,append_joint=name=='binary_log13')
-                    ref=fold['preprocessing']['Log13' if name=='binary_log13' else 'HGB12']
+                    ref=fold['preprocessing']['Log13' if name=='binary_log13' else 'Ridge12']
                     for field in prep:scaler_error=max(scaler_error,float(np.max(abs(np.asarray(prep[field])-ref[field]))))
                     if scaler_error>1e-10:raise ValueError('TRAIN preprocessing drift')
                     y=np.asarray([labels[r['key']]['event' if name.startswith('binary') else 'gR'] for r in train],float)
@@ -194,14 +182,14 @@ def run(mode,output,prepared_panel=None):
                     rank_match[name]=rank_match.get(name,True) and same
                     record=dict(month=month,model=name,TRAIN_N=len(train),TRAIN_positive=int(sum(labels[r['key']]['event'] for r in train)),
                                 TRAIN_last_label=max(r['target_month'] for r in train),TRAIN_feature_max=max(r['max_feature_date_declared'] for r in train),
-                                train_outside_edit_candidates=sum(not r['v2_evaluation_eligible_asof'] for r in train),candidate_N=len(candidates),
+                                train_outside_edit_candidates=sum(not r['evaluation_eligible_asof'] for r in train),candidate_N=len(candidates),
                                 TRAIN_keys_sha256=digest(keys),preprocessing_sha256=digest(prep),seconds=time.monotonic()-t,
                                 score_max_error=error,exact_rank_match=same,numeric=info)
                     trace.append(record);save(output/'fit_trace.json',trace)
-                    print(f'{month} {name}: fit {len(trace)}/96, score error={error:.3g}, ranks={same}',flush=True)
+                    print(f'{month} {name}: fit {len(trace)}/48, score error={error:.3g}, ranks={same}',flush=True)
                     if error>SCORE_TOLERANCE or not same:
                         raise ValueError(f'Retraining mismatch: {month} {name}; diagnose before publishing')
-        if len(trace)!=96:raise ValueError('96 actual fits required')
+        if len(trace)!=48:raise ValueError('48 actual fits required')
     elif mode=='replay':
         scores=expected
     else:raise ValueError('Mode must be refit or replay')
@@ -219,7 +207,7 @@ def run(mode,output,prepared_panel=None):
         python=platform.python_version(),numpy=np.__version__,scipy=scipy.__version__,sklearn=sklearn.__version__,threadpoolctl=threadpoolctl.__version__,
         prediction_tolerance=SCORE_TOLERANCE,metric_tolerance=METRIC_TOLERANCE,model_prediction_max_error=prediction_error,
         all_monthly_rank_orders_match=rank_match,TRAIN_scaler_max_error=scaler_error,baseline_formula_max_error=baseline_error,
-        canonical_baseline_floats_retained=True,monthly_metric_max_error=metric_error,monthly_metric_checks=len(monthly)*3,
+        canonical_baseline_floats_retained=False,monthly_metric_max_error=metric_error,monthly_metric_checks=len(monthly)*3,
         elapsed_seconds=time.monotonic()-started,development_only=True)
     save(output/'verification.json',report)
     print(json.dumps(report,indent=2),flush=True)

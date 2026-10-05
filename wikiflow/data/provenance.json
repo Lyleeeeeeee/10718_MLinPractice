@@ -1,5 +1,5 @@
 {
-  "status": "sanitized_minimal_export",
+  "status": "sanitized_course_baseline_subset",
   "raw_data_included": false,
   "holdout_accessed": false,
   "source_sha256": {
@@ -9,35 +9,23 @@
     "sessions/2026-10-04_identity_correction/views/natural_labels_VALID_ARTICLE_JOIN_CORRECTED_V1.json": "dcae8b3f09d2f00f81930dc2640818ef9559ad96959697ab4daa9c5c5498a524",
     "sessions/2026-10-04_warming_magnitude_ranking/relative_warming_v2_user_confirmed_2026-10-04/authorized57_training/identity_manifest_v1_acceptance_zero_fit_after145/relative_LABELS_IDENTITY_VALID_V1_UNCHANGED_TARGET.json": "d8a5972d706d5df7937d46dafbd8eb29af7afae73d2820040d3b867332799e96",
     "sessions/2026-10-04_identity_correction/views/fold_manifests_CORRECTED_V1.json": "d1dbda133e899016ff8f29fa90268702f1d5f6611c6c6acdd6e03acba2ad722a",
-    "sessions/2026-10-04_identity_corrected_binary_Log13_HGB26/all24_ownTRAIN_preprocessing_FROZEN_BEFORE_FIT.json": "5162d4e4bb81ac40b15c40fbb3c4043f7107e7794e5fbf7ff592a5d407adca20",
-    "sessions/2026-10-04_identity_corrected_binary_Log13_HGB26/corrected_all24_all7_scores_FROZEN.json": "9ca27527ebb068ceba1697acec1dc26318107fef16eedc43814a505910f631de",
-    "sessions/2026-10-04_warming_magnitude_ranking/relative_warming_v2_user_confirmed_2026-10-04/authorized57_training/identity_corrected_v1_authorized26/main8_corrected_SCORES_NO_BINARY_NO_ABSOLUTE_NO_FUSION.json": "9120306fa985d2cf6e43ca4d7e1b7613b8e45f801e230c968802664ab3a0f422",
-    "sessions/2026-10-04_identity_corrected_binary_Log13_HGB26/corrected_monthly_all7_allK.csv": "9afee4d71b12e27c17f64c510a309a7237a72a5a04c43d7799700f63eaef4a79",
-    "sessions/2026-10-04_warming_magnitude_ranking/relative_warming_v2_user_confirmed_2026-10-04/authorized57_training/identity_corrected_v1_authorized26/main8_monthly_corrected_all6K.csv": "4d77b18f8d8b61ffb37c407b6926aa4307a22d14a42762d309f7e56d4674f636",
-    "sessions/2026-10-04_identity_corrected_binary_Log13_HGB26/approved_protocol_FROZEN_BEFORE26_FITS.json": "bcb9c18fc9a7f44b2d87970ec3da9e247e54aa9e42575d87983524d34b399e6f",
     "sessions/2026-10-04_warming_magnitude_ranking/relative_warming_v2_user_confirmed_2026-10-04/authorized57_training/early_lambda_selection_FROZEN_BEFORE_OUTER.json": "fddc0aa199d64322b5fad4312bb67fcd6f913846116755355349ace08b4a58d6",
     "data/reference/title_mapping.csv": "e09d5daf9c53e7f48f8cb785912ba78b20b1a225afb3e44c23f8a2448ca64f4c",
     "data/reference/wikiproject_ai_articles.csv": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820",
-    "data/manifest.json": "89721a83ffd18caafa4b57cb1a8364daebd45ccbbad4e074f7c0ec0f590ddefd",
-    "sessions/2026-10-04_identity_correction/identity_policy.py": "e58454b196c48b532437022fd8073bafa44518206a103e08581756464766d928",
-    "sessions/2026-10-04_identity_corrected_binary_Log13_HGB26/common.py": "c7c7099a9d2224854820f7802911789e56507958d585489f29313f1b5a062e01",
-    "sessions/2026-10-04_identity_corrected_binary_Log13_HGB26/fit26.py": "c008cc66427a22632374b6a91e041d50ccc66670ab8468ba5bfb1d9c6db291ff",
-    "sessions/2026-10-04_identity_corrected_binary_Log13_HGB26/preflight.py": "03cf47f155bef05e0d59858692675c2185cd095ee201716081f1d4134281b2ee",
-    "sessions/2026-10-04_stale_exposure_audit/attention_excess_two_fit_pilot/pilot_math.py": "4237a8ec404bc02104dae8e6694d7ace22d78e8e1d2d29848c6dc7ebbc4a6290",
-    "sessions/2026-10-04_stale_exposure_audit/rolling_training_support_zero_fit/verify_support_no_fit.py": "4a30c1b088d61278149fedc0fc90a8d4d7421bc746e2836e5757aeb2e58cca56",
-    "sessions/2026-10-04_stale_exposure_audit/onset_MoM25_edit_single500_cumulative1000_v2/prepare_v2_no_fit.py": "9bd77f64d71860cdca19dcb5e1c7d7243548bd32aa268f72e77a9de3ee0e74ac",
-    "src/wikiflow_context/acquisition.py": "b866b3482db7ec538d535a35d8cbdc5feb93334cc40c6cd581b5563fc54a4642"
+    "sessions/2026-10-04_identity_correction/identity_policy.py": "e58454b196c48b532437022fd8073bafa44518206a103e08581756464766d928"
   },
   "package_sha256": {
-    "data/expected_monthly.json.gz": "8df4e3d6c9f3cadf103c760c96feecaba7e357622f849fd4cc04730b3ad86aba",
-    "data/expected_scores.json.gz": "26eac10d8a5aed39311895ec3d4b0561bf0ad49d80cfe55bfcd0bb1341bf1cfc",
-    "data/folds.json": "fa4471652b575fc73b225bd4a5b146b816c848172b64cdfd8c618021af46f55b",
-    "data/panel.json.gz": "bb0b1178a3a96772fcb8fcfeddbc9f03ae79e92addcc6202c21f2ca053d8ac80",
+    "data/expected_monthly.json.gz": "6d79f8e599ae114204bde794c231531c612771db4e2e250df34bd20f2846b7a4",
+    "data/expected_scores.json.gz": "9b021499ca5cd3ce58e8f4c83b006bfff163449ca5237f07075136b7ea80e2e3",
+    "data/folds.json": "7b2f0acc4b2ad2bdc87617c15aa5a032f5e22a5d502143ddd7387e5e331a32a4",
+    "data/panel.json.gz": "8727d27c1b70096971bcfd8bf8f0d9f6270dc9a0e8d9cdcb613cdfa0282e1fcf",
     "data/public_download_provenance.json": "efce6b18676fdfbe30f71d7e7d68d030905ef24c0c3cdb0d3627e7504dfdec6d",
     "data/title_mapping.csv": "e09d5daf9c53e7f48f8cb785912ba78b20b1a225afb3e44c23f8a2448ca64f4c",
     "data/wikiproject_ai_articles.csv": "db947d8139779d7425dcd5143529695cc5173f1d473578cf551bfe3eac43e820",
-    "config/benchmark.json": "345eb6c5a7d7ffe7abc2ddf2dc1b9f94255aee4e593d00611874e3c38325b13c",
-    "config/early_selection.json": "948d1de501207ad7983f8e2e04fd59820a7712680c8afc52174356d6ff7d3cbf",
+    "config/benchmark.json": "0d48b31fc52efcc079db535887c3241320867c4fa614bf3e8b25850cf1ff63c1",
+    "config/early_selection.json": "b478175b18d815ccb1620e2f12bfec38e9962d27d2dd8199415509ff99cc7f48",
     "config/identity_policy.json": "4546e8d5727f3388592109a4ef221b465cede08cc542e28f4873d1e8cab2616a"
-  }
+  },
+  "complete_benchmark_commit": "ccf65a63287330870b43b7cb563d4cd20348d3a8",
+  "identity_version": "v1 retained; Brainiac limitation documented without a correction"
 }

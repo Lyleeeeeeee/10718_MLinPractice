@@ -23,12 +23,12 @@ class Preparation(unittest.TestCase):
     def test_exact_twelve_features_and_relative_label(self):
         api=self.api();mapping,vol,pv,records,cov=cache()
         panel=api.build_panel(mapping,vol,pv,records,cov,'2024-09','2024-09')
-        self.assertEqual(panel['schema'],'wikiflow.corrected.panel.v1')
+        self.assertEqual(panel['schema'],'wikiflow.course.panel.v1')
         r=panel['rows'][0];label=panel['labels'][r['key']]
         self.assertEqual(r['features'],[math.log1p(10)]*4+[0,math.log1p(10),1,math.log1p(5),0,0,0,math.log1p(300)-math.log1p(450)])
         self.assertEqual(r['U_count'],450);self.assertEqual(r['current_precurrent_U'],465)
         self.assertEqual(r['effective_event_U_asof'],450)
-        self.assertEqual(r['rule_forecasts'],{'daily_persistence':300,'PV_trend':300})
+        self.assertNotIn('rule_forecasts',r)
         self.assertEqual(panel['evaluation_keys'],[r['key']])
         self.assertEqual(label['event'],1);self.assertAlmostEqual(label['R'],500/450-1)
 
@@ -36,7 +36,7 @@ class Preparation(unittest.TestCase):
         api=self.api();mapping,vol,pv,records,cov=cache();del vol['2024-09']['Example'];del pv['Example']['2024-08-10']
         p=api.build_panel(mapping,vol,pv,records,cov,'2024-09','2024-09');r=p['rows'][0]
         self.assertFalse(p['labels'][r['key']]['known']);self.assertEqual(p['evaluation_keys'],[r['key']])
-        self.assertEqual(r['features'][7:10],[None,None,1]);self.assertEqual(r['rule_forecasts']['PV_trend'],300)
+        self.assertEqual(r['features'][7:10],[None,None,1])
 
     def test_metadata_boundaries_minor_reverts_and_training_without_edit_filter(self):
         api=self.api();mapping,vol,pv,records,cov=cache()

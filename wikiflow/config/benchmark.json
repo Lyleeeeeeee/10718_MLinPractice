@@ -41,54 +41,19 @@
       "family": "Logistic",
       "lambda": 0.01,
       "config": {
-        "objective": "mean BCE + .5*lambda*sum(beta²); intercept unpenalized",
+        "objective": "mean BCE + .5*lambda*sum(beta\u00b2); intercept unpenalized",
         "max_iterations": 200,
         "gradient_tolerance": 1e-09,
         "max_line_search_steps": 60,
         "Armijo": 0.0001,
         "initialization": "zero slopes, intercept logit foldTRAIN prevalence; no warmstart/retries"
       },
-      "complexity_tie_priority": 1,
       "feature_dim": 13,
       "only_change": "append jointT_asof margin"
-    },
-    {
-      "name": "HGB12_depth2_30_L2_1",
-      "family": "HGB",
-      "config": {
-        "loss": "log_loss",
-        "learning_rate": 0.03,
-        "max_iter": 30,
-        "l2_regularization": 1.0,
-        "max_bins": 32,
-        "max_features": 1.0,
-        "categorical_features": null,
-        "class_weight": null,
-        "early_stopping": false,
-        "validation_fraction": null,
-        "warm_start": false,
-        "random_state": 718,
-        "max_depth": 2,
-        "max_leaf_nodes": 4
-      },
-      "min_samples_leaf_rule": "max(50,ceil(.10*ownTRAIN_N))",
-      "complexity_tie_priority": 3
     }
   ],
   "relative_ridge_lambda": 0.01,
-  "relative_hgb": {
-    "loss": "squared_error",
-    "learning_rate": 0.03,
-    "max_iter": 30,
-    "max_depth": 2,
-    "max_leaf_nodes": 4,
-    "max_bins": 32,
-    "l2_regularization": 1.0,
-    "max_features": 1.0,
-    "categorical_features": null,
-    "early_stopping": false,
-    "validation_fraction": null,
-    "warm_start": false,
-    "random_state": 718
-  }
+  "non_ml_baseline": "volume: current monthly incoming clickstream count descending",
+  "relative_model": "relative_ridge12",
+  "subset_of_commit": "ccf65a63287330870b43b7cb563d4cd20348d3a8"
 }

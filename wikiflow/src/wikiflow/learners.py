@@ -1,10 +1,9 @@
-"""The four frozen learners; no search, class weighting, warm start or early stop."""
+"""The two frozen course learners; no search, class weighting or warm start."""
 import math
 import numpy as np
-from sklearn.ensemble import HistGradientBoostingClassifier, HistGradientBoostingRegressor
 from sklearn.linear_model import Ridge
 
-MODELS = ['binary_log13','binary_hgb12','relative_ridge12','relative_hgb12']
+MODELS = ['binary_log13','relative_ridge12']
 
 
 def sigmoid(a):
@@ -48,15 +47,7 @@ def fit_logistic(x,y,lam=.01):
 def model_parameters(name,n):
     if name=='relative_ridge12':
         return dict(alpha=n*.01,fit_intercept=True,solver='cholesky')
-    if name not in ['binary_hgb12','relative_hgb12']:
-        raise ValueError('Unrecognized frozen model')
-    config=dict(loss='log_loss' if name=='binary_hgb12' else 'squared_error',
-                learning_rate=.03,max_iter=30,l2_regularization=1.,max_bins=32,max_features=1.,
-                categorical_features=None,early_stopping=False,validation_fraction=None,
-                warm_start=False,random_state=718,max_depth=2,max_leaf_nodes=4,
-                min_samples_leaf=max(50,math.ceil(.1*n)))
-    if name=='binary_hgb12':config['class_weight']=None
-    return config
+    raise ValueError('Unrecognized frozen model')
 
 
 def fit_predict(name,x,y,z):
@@ -64,18 +55,12 @@ def fit_predict(name,x,y,z):
         theta,info=fit_logistic(x,y)
         return sigmoid(theta[0]+z@theta[1:]),dict(info,theta=theta.tolist(),lambda_value=.01)
     params=model_parameters(name,len(x))
-    classes={'binary_hgb12':HistGradientBoostingClassifier,
-             'relative_hgb12':HistGradientBoostingRegressor,'relative_ridge12':Ridge}
-    model=classes[name](**params)
-    model.fit(x,y.astype(int) if name=='binary_hgb12' else y)
-    prediction=model.predict_proba(z)[:,1] if name=='binary_hgb12' else model.predict(z)
+    model=Ridge(**params)
+    model.fit(x,y)
+    prediction=model.predict(z)
     info=dict(parameters=params)
-    if 'hgb' in name:
-        if model.n_iter_!=30:raise RuntimeError('Tree iteration count changed')
-        info['iterations']=model.n_iter_
-    else:
-        residual=model.predict(x)-y
-        info['gradient_inf']=max(float(np.max(abs(x.T@residual/len(x)+.01*model.coef_))),abs(float(residual.mean())))
-        if info['gradient_inf']>=1e-9:raise RuntimeError('Ridge numerical verification failed')
+    residual=model.predict(x)-y
+    info['gradient_inf']=max(float(np.max(abs(x.T@residual/len(x)+.01*model.coef_))),abs(float(residual.mean())))
+    if info['gradient_inf']>=1e-9:raise RuntimeError('Ridge numerical verification failed')
     if not np.isfinite(prediction).all():raise ValueError('Nonfinite predictions')
     return prediction,info

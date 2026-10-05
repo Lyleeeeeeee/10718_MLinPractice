@@ -21,6 +21,5 @@
     "0.01": 0.21070004540606072,
     "0.1": 0.19360397215773992
   },
-  "selection_rule": "three equal chronological folds; tie<=1e-12 stronger lambda .1",
-  "HGB_fixed_no_selection": true
+  "selection_rule": "three equal chronological folds; tie<=1e-12 stronger lambda .1"
 }

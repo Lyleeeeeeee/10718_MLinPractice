@@ -1,12 +1,10 @@
 {
   "status": "PASS",
   "mode": "refit",
-  "actual_fits": 96,
+  "actual_fits": 48,
   "fixed_model_fits": {
     "binary_log13": 24,
-    "binary_hgb12": 24,
-    "relative_ridge12": 24,
-    "relative_hgb12": 24
+    "relative_ridge12": 24
   },
   "months": [
     "2024-09",
@@ -41,8 +39,8 @@
   "source_raw_downloads": 0,
   "new_tuning_fits": 0,
   "holdout_read": false,
-  "prepared_panel_used": true,
-  "prepared_value_max_error": 4.547473508864641e-13,
+  "prepared_panel_used": false,
+  "prepared_value_max_error": null,
   "python": "3.13.5",
   "numpy": "2.3.3",
   "scipy": "1.16.2",
@@ -52,28 +50,19 @@
   "metric_tolerance": 5e-12,
   "model_prediction_max_error": {
     "binary_log13": 9.71445146547012e-16,
-    "binary_hgb12": 2.0816681711721685e-17,
-    "relative_ridge12": 1.0408340855860843e-16,
-    "relative_hgb12": 0.0
+    "relative_ridge12": 0.0
   },
   "all_monthly_rank_orders_match": {
     "binary_log13": true,
-    "binary_hgb12": true,
-    "relative_ridge12": true,
-    "relative_hgb12": true
+    "relative_ridge12": true
   },
   "TRAIN_scaler_max_error": 2.8421709430404007e-13,
   "baseline_formula_max_error": {
-    "volume": 0.0,
-    "strong_cs": 0.0,
-    "cs_momentum": 1.7763568394002505e-15,
-    "cs_momentum_clipped": 0.0,
-    "pv_u": 8.881784197001252e-16,
-    "pv_t": 8.881784197001252e-16
+    "volume": 0.0
   },
-  "canonical_baseline_floats_retained": true,
+  "canonical_baseline_floats_retained": false,
   "monthly_metric_max_error": 5.551115123125783e-17,
-  "monthly_metric_checks": 6480,
-  "elapsed_seconds": 10.96684016706422,
+  "monthly_metric_checks": 1728,
+  "elapsed_seconds": 3.8881418330129236,
   "development_only": true
 }

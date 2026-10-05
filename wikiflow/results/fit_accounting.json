@@ -1,19 +1,22 @@
 {
-  "packaging_actual_fits": 192,
-  "snapshot_fits": 96,
-  "from_cache_fits": 96,
+  "scope": "current course subset offline validation only",
+  "actual_fixed_fits": 48,
+  "binary_log13_fits": 24,
+  "relative_ridge12_fits": 24,
+  "replay_fits": 0,
+  "new_tuning_fits": 0,
+  "raw_downloads": 0,
+  "holdout_read": false,
   "source_experiment_ledgers_written": false,
-  "parameter_search_fits": 0,
-  "network_acquisition_requests": 0,
-  "fixed_families": [
-    "binary_log13",
-    "binary_hgb12",
-    "relative_ridge12",
-    "relative_hgb12"
-  ],
-  "seed": 718,
-  "threads": 2,
-  "total_refit_seconds": 21.875773000065237,
-  "cached_preparation_seconds": 4.277400417020544,
-  "note": "Separate packaging verification fits; original experiment budgets/ledgers remain untouched."
+  "input": "existing frozen cached derived snapshot",
+  "previous_complete_benchmark_commit": "ccf65a63287330870b43b7cb563d4cd20348d3a8",
+  "test_count": 25,
+  "tests_passed": true,
+  "complete_monthly_model_ranks_match": true,
+  "monthly_metric_checks": 1728,
+  "prediction_max_error": {
+    "binary_log13": 9.71445146547012e-16,
+    "relative_ridge12": 0.0
+  },
+  "monthly_metric_max_error": 5.551115123125783e-17
 }

@@ -1,7 +1,7 @@
-# 10718 ML in Practice — WikiFlow
+# WikiFlow course baselines
 
-Identity-corrected binary event and **relative** warming ranking benchmark for the WikiProject Artificial Intelligence maintenance portfolio.
+A reproducible monthly Wikipedia ranking study for 10-718. The current package contains one non-ML baseline (current incoming clickstream volume), binary Logistic13 and relative continuous Ridge12.
 
-[Design and end-to-end contracts](wikiflow/docs/design.md) · [Run, definitions, public data acquisition and limitations](wikiflow/README.md) · [Audited protocol](wikiflow/docs/audit.md) · [Actual fixed-model retraining evidence](wikiflow/results/verification.json) · [Results at K=50](wikiflow/results/summary_at50.csv).
+This is a course baseline subset of the [complete benchmark](https://github.com/Lyleeeeeeee/10718_MLinPractice/tree/ccf65a63287330870b43b7cb563d4cd20348d3a8); other studied rules and nonlinear comparators remain in that commit and the repository history.
 
-The package contains the necessary pipeline, public fixtures, a compact derived training snapshot and checked predictions. Historical months are repeatedly studied development backtests. No stable advantage over strong rules or independent test performance is claimed; September 2026 remains sealed.
+Start with the [README and reproduction commands](wikiflow/README.md), [design](wikiflow/docs/design.md) and [audit](wikiflow/docs/audit.md). All historical results are development backtests. The retained identity-v1 snapshot has a documented Brainiac subject mismatch; these results are reproducible inherited comparisons, not a claim of fully verified historical identities or globally optimal models.
