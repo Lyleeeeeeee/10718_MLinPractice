@@ -1,14 +1,14 @@
-# WikiFlow：身份修正后的最小复现包
+# WikiFlow: identity-corrected minimal reproducibility package
 
-在 WikiProject Artificial Intelligence 的维护名单中，按月推荐当前未升温、近期大幅编辑较少、下月可能出现内部导航升温的文章。名单固定为 1,187 个 canonical article；它包含人物、作品和其他维护范围文章，不是纯 AI 技术集合。编辑历史是候选资格代理，不是内容质量或维护必要性的标签。
+Rank articles in the WikiProject Artificial Intelligence maintenance portfolio each month to identify those that are currently cold, have had few substantial recent edits, and may experience increased internal navigation next month. The fixed portfolio contains 1,187 canonical articles, including people, works and other maintenance-scope subjects. It is not a pure AI technology collection. Edit history is a candidate-eligibility proxy, not a label for content quality or maintenance need.
 
-本包只整理 2026-10-04 身份修正后的 binary 与最新 **relative continuous** 主线。旧 absolute continuous、诊断融合、新渠道/来源实验、完整 sessions、模型 pickle、原始大数据均未纳入。
+This package covers only the identity-corrected binary benchmark and latest **relative continuous** benchmark reported on 2026-10-04. It excludes the old absolute continuous version, diagnostic fusion, new channel/source experiments, full sessions, model pickles and large raw datasets.
 
-[设计文档](docs/design.md) 面向课程队友，逐项说明月度人工检查用途、数据与时间合同、原13特征、模型选择、同池评价及未完成事项；[审阅记录](docs/audit.md) 保留核对证据。
+The [design document](docs/design.md) explains the monthly human-review use case, data and time contracts, all 13 features, model selection, shared-pool evaluation and unfinished work for course teammates. The [audit record](docs/audit.md) preserves the review evidence.
 
-## 快速复现：真的重训
+## Quick reproduction: actual retraining
 
-从仓库根目录运行。推荐 Python **3.13.5**；实际验证环境为 NumPy 2.3.3、SciPy 1.16.2、scikit-learn 1.7.2、threadpoolctl 3.6.0。其他支持 Python 版本可运行，但位级浮点复现需使用记录的环境。
+Run from the repository root. Recommended Python version: **3.13.5**. The verified environment used NumPy 2.3.3, SciPy 1.16.2, scikit-learn 1.7.2 and threadpoolctl 3.6.0. Other supported Python versions may work, but use the recorded environment for exact floating-point reproduction.
 
 ```bash
 python3 -m venv .venv
@@ -20,53 +20,53 @@ python -m unittest discover -s wikiflow/tests -v
 python -m wikiflow.reproduce --mode refit --output wikiflow/runs/my-refit
 ```
 
-`refit` 对 2024-09—2026-08 的每月执行 Log13、binary HGB12、relative Ridge12、relative HGB12：**24×4=96 次真实拟合**，固定参数，无新搜索。输入和每折 TRAIN keys 校验后，由各折 TRAIN 重算 imputation/scaler；与历史基准逐行比较模型分数、逐月完整排序以及所有 6 个 K 的指标。任何不一致超过容限即停止。每次运行须使用新的输出目录。
+For each month from 2024-09 through 2026-08, `refit` trains Log13, binary HGB12, relative Ridge12 and relative HGB12: **24x4=96 actual fits**, with fixed parameters and no new search. After validating inputs and each fold's TRAIN keys, it recomputes imputation and scaling from that TRAIN alone. It checks every model score, each complete monthly ranking and metrics at all six K values against the historical benchmark. Any mismatch beyond tolerance stops the run. Use a new output directory for every run.
 
 ```bash
 python -m wikiflow.reproduce --mode replay --output wikiflow/runs/my-replay
 ```
 
-`replay` 只重算已存预测的指标，实际拟合数为 0，与 `refit` 清楚区分。输出含 `fit_trace.json`、封存预测、逐月/汇总 CSV、`verification.json`。提交的 results 是 push 前实际 refit 的证据，不把 replay 称为重训。本次先对冻结快照重训96次，再验证完整缓存→清洗→重训96次，合计192次固定拟合，无调参；两条路径所有逐月排序与已报指标一致，各约10.9秒。
+`replay` only recomputes metrics from stored predictions and performs 0 fits. Outputs include `fit_trace.json`, sealed predictions, monthly/aggregate CSVs and `verification.json`. The committed results document actual refitting before publication; replay is not retraining. Packaging verification performed 96 fits from the frozen snapshot and 96 through the complete existing-cache -> preparation -> refit path: 192 fixed fits, with no tuning. Both paths matched all monthly rankings and reported metrics, taking about 10.9 seconds each.
 
-## 已复现的 K=50 结果
+## Reproduced results at K=50
 
-候选池共 **5,388 个 article-month**。24 个历史月中，23 月全部标签已知，22 月含事件；自然事件 182，Top50 槽位 1,150。2026-04 有未知标签，整月指标 NA；2025-04 无事件，TP/precision 计入，NDCG/AP/recall 为 NA。2026-07 移除身份未知候选后恢复完整评价。
+The candidate pool contains **5,388 article-months**. Of 24 historical months, 23 have complete labels and 22 contain events; there are 182 natural events and 1,150 Top50 slots. April 2026 has unknown labels, so all metrics for that month are NA. April 2025 has no events: TP/precision contribute, while NDCG/AP/recall are NA. July 2026 becomes fully evaluable after quarantining the identity-unknown candidate.
 
-| Binary 排序方法 | macro NDCG50 | macro AP（完整列表） | TP50累计 |
+| Binary ranking method | macro NDCG50 | macro AP (full ranking) | cumulative TP50 |
 |---|---:|---:|---:|
 |volume|0.123384165982|0.062143794623|45|
 |strong CS|0.262764324285|0.133360599203|70|
 |Log13|0.261323643627|0.127705211410|75|
 |HGB12|0.254520450786|0.114735066542|77|
 
-| Relative 排序方法 | macro graded NDCG50 | TP50累计 |
+| Relative ranking method | macro graded NDCG50 | cumulative TP50 |
 |---|---:|---:|
 |volume|0.092810605545|45|
 |Ridge12|0.138377139655|63|
 |HGB12|0.127657749963|57|
 |PV trend/T|0.184767834660|77|
 
-[完整主方法表](results/summary_at50.csv) 同时保留 binary 7 方法、relative 8 方法；[逐月表](results/monthly_at50.csv) 与原结果核对。HGB12 指 **12 列特征**；原目录名的 HGB26/authorized26 指身份修复的 **26 次拟合**，不是 26 个特征。
+The [complete main-method table](results/summary_at50.csv) retains seven binary and eight relative methods. The [monthly table](results/monthly_at50.csv) is checked against the original results. HGB12 means **12 feature columns**; the historical directory names HGB26/authorized26 refer to **26 identity-correction fits**, not 26 features.
 
-无稳定 ML 优于强 CS/PV 规则的证据，均值胜过 volume 不能改写为稳定胜出。所有历史月份反复研究，叫开发回测，不叫独立测试。原研究区间为描述性区间，不构成独立验证；本最小包复现点预测和指标，没有再跑 bootstrap 或调参搜索。
+There is no evidence of stable ML superiority over strong CS/PV rules. A mean improvement over volume must not be described as stable superiority. All historical months were repeatedly studied and are development backtests, not independent tests. The original research intervals are descriptive and do not establish independent validation. This minimal package reproduces point predictions and metrics; it does not rerun bootstrap estimation or parameter search.
 
-## 数据、时间与身份
+## Data, time and identity
 
-公共来源是 [Wikimedia monthly Clickstream](https://dumps.wikimedia.org/other/clickstream/readme.html)、[article daily pageviews](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/reference/page-views.html)、[MediaWiki revisions API](https://www.mediawiki.org/wiki/API:Revisions) 和当前 WikiProject talk category。
+Public sources are [Wikimedia monthly Clickstream](https://dumps.wikimedia.org/other/clickstream/readme.html), [article daily pageviews](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/reference/page-views.html), the [MediaWiki revisions API](https://www.mediawiki.org/wiki/API:Revisions) and the current WikiProject talk category.
 
-Clickstream 按所有 Wikipedia 内部 `link` 来源→canonical destination 的公布计数求和；不是独立读者数、搜索曝光或全部 pageviews。清洗保留字面 TSV 的四列、published count=10 边界、任意内部来源；不限定来源也属于 AI 名单。未公布边受到抑制；缺失 article/month 是未知，不能补零。原采集用 redirect/normalized mapping 确定 canonical 维护名单，但**没有另行把 redirect alias 的 destination 计数聚合入 canonical**；本包保持原计数定义。
+Clickstream sums published counts from all internal Wikipedia `link` sources to canonical destinations. It does not measure unique readers, search exposure or all pageviews. Preparation preserves literal four-column TSV data, the published count=10 boundary and any internal source; sources need not belong to the AI portfolio. Unpublished low-count edges are suppressed. A missing article/month is unknown, not zero. Original acquisition used redirect/normalized mappings to define the canonical portfolio, but **did not separately aggregate redirect-alias destination counts into the canonical article**. This package preserves that counting definition.
 
-固定历史输入范围为 2022-09—2026-08，模型目标 2023-10—2026-08，开发评价目标 2024-09—2026-08；用于预测 M 的 CS/PV 特征截至 M−1，PV 截止最终 2026-07-31。编辑元数据截至 2026-08-01 exclusive。标签取目标月已经公布的 incoming article count。2026-09 holdout 不在派生快照里，入口拒绝该月及之后。
+Historical inputs span 2022-09 through 2026-08, model target months 2023-10 through 2026-08, and development evaluation targets 2024-09 through 2026-08. CS/PV features for target M end at M-1; the final PV cutoff is 2026-07-31. Revision metadata end at 2026-08-01 exclusive. Labels use the published incoming article count for the target month. The 2026-09 holdout is absent from the derived snapshot, and entry points reject that month and later.
 
-历史采用当前 2026 名单、当前标题映射和修订后的数据 vintage，**并假设 M−1 月 CS/标签在 M 月初已成熟可用**。真实历史 release latency 未还原，不是已经证明的月初生产可部署方案。
+History uses the current 2026 portfolio, current title mapping and revised data vintage, **assuming M-1 CS/labels are mature and available at the start of M**. Actual historical release latency has not been reconstructed. This is not a demonstrated deployable month-start production system.
 
-权威身份修正是 `identity_correction_v1_Daniel_homonym_quarantine`，[公开策略](config/identity_policy.json) 保留源 manifest SHA256。pageid **79745475** 的 Daniel Kokotajlo 当前同名槽身份不明：训练、候选和标签统一阻断，不把导演 pageid 62422990 的历史转移给它，不制造零标签。历史已有排除 1164/72417803 保持；Naevis 78522383 的 review-only 警示保留，不自动删行。当前映射并不认证所有文章的历史身份，特别是 M−12 季节特征。
+The authoritative correction is `identity_correction_v1_Daniel_homonym_quarantine`; its [public policy](config/identity_policy.json) preserves the source manifest SHA256. The current Daniel Kokotajlo homonym slot, pageid **79745475**, has uncertain historical identity and is blocked in TRAIN, candidates and labels. The history of director pageid 62422990 is not transferred to it, and no zero labels are fabricated. Existing exclusions 1164/72417803 remain. Naevis 78522383 retains its review-only warning and is not automatically removed. Current mapping does not certify every article's historical identity, particularly for the M-12 seasonal feature.
 
-## 公式与候选
+## Formulas and candidates
 
-令目标月为 M，当前完整月 c=M−1，月长为 D，文章每月公布的内部 incoming count 为 I，日均 v=I/D。
+Let M be the target month, c=M-1 the current complete month, D the calendar month length, I the published monthly internal incoming count, and v=I/D its daily rate.
 
-对结束于 c 的 6 个完整月日均，m=median(v)，s=1.4826×median(|v−m|)：
+For the six complete monthly daily rates ending at c, let m=median(v) and s=1.4826*median(|v-m|):
 
 ```text
 U_M = max(200, D_M*m + max(100, 0.5*D_M*m, 3*D_M*s))
@@ -77,44 +77,44 @@ R_M = max(0, actual_M / T_M - 1)
 gR_M = log1p(R_M)                               # once
 ```
 
-U 的 floor 和 padding 是固定政策，不是校准过的“三倍标准差”概率区间。binary 等价于 actual>U **且**按日环比严格>25%；不是预测单纯未来流量。旧 absolute `max(0,actual−T)` 不在该 continuous 标签中。
+U's floor and padding are fixed policies, not a calibrated three-sigma probability interval. Binary requires actual>U **and** daily-rate month-over-month growth strictly greater than 25%; it does not predict raw future volume alone. The old absolute `max(0,actual-T)` is not this continuous target.
 
-同一 candidate pool 满足：固定身份有效、当前 count≥100、当前及前 6 月 incoming 均有公布记录、质量/编辑覆盖完整；当前 rate≤U_M/D_M，且当前 count≤用此前 6 月（不含当前）冻结的 U_c；最近两完整月 `[M−2月初,M月初)` 内非 minor 单次**净字节绝对变化**<500，累计绝对变化<1000。净变化按每次 revision 与真实 parent 的 size 差计算，回退也计入，minor 忽略；这是净字节代理，无法发现字节相抵的大幅改写。
+All methods share one candidate pool. Candidates require valid identity, current count>=100, published incoming observations for the current and six previous months, and complete quality/edit coverage. The current rate must be <=U_M/D_M, and the current count must be <=U_c frozen from the six preceding months, excluding the current month. During the two complete months `[start of M-2, start of M)`, every nonminor edit must have **absolute net byte change**<500 and their cumulative absolute change must be <1000. Net change is the revision size minus its true parent's size. Reverts count and minor edits are ignored. This net-byte proxy cannot detect large rewrites whose additions and deletions cancel.
 
-**训练保留质量完整且 current-cold 的 expanded pool，不按编辑候选过滤。** 每折只用 target<M、标签已知的行；未来 M+ 标签、未知历史标签不得进入 TRAIN。派生 pool 共 11,080 行。
+**Training uses the quality-complete, current-cold expanded pool without the edit candidate filter.** Each fold uses only known-label rows with target<M; future M+ labels and unknown historical labels cannot enter TRAIN. The derived expanded pool has 11,080 rows.
 
-## 特征、预处理与固定模型
+## Features, preprocessing and frozen models
 
-|index|原12列|
+|index|original 12 columns|
 |---:|---|
-|0/1|log1p 当前/前一月 CS 日均|
-|2/3|log1p 最近3月均值/最近6月中位 CS 日均|
-|4|最近6月日均 OLS slope，分母17.5|
-|5/6|log1p 目标 M−12 月日均；缺失则 current fallback + missing flag|
-|7/8/9|log1p 当前整月 PV 日均；最近14天/前14天 log1p 均值之差；PV missing flag|
-|10/11|log1p robust daily sigma；log1p(x_M)−log1p(U_M)|
+|0/1|log1p current/previous-month CS daily rate|
+|2/3|log1p mean of last 3 / median of last 6 monthly CS daily rates|
+|4|OLS slope of last 6 monthly daily rates, denominator 17.5|
+|5/6|log1p target M-12 daily rate; current-rate fallback plus missing flag if absent|
+|7/8/9|log1p current complete-month mean daily PV; difference between log1p recent-14/prior-14 mean PV; PV missing flag|
+|10/11|log1p robust daily sigma; log1p(x_M)-log1p(U_M)|
 
-Log13 再加第13列 `log1p(x_M)−log1p(T_M)`。PV 整月不完整时相关量保留 None；以每折成熟 TRAIN median 插补、计算均值和**总体**标准差，std<1e−12→1。missing flag 与“无观测列 median=0 的计算性 fallback”保留，不把未知 outcome 当负例。树也使用相同 TRAIN 标准化输入，保持历史配方。
+Log13 appends `log1p(x_M)-log1p(T_M)` as column 13. An incomplete PV month leaves its associated values as None. Each mature TRAIN supplies median imputation, means and **population** standard deviations; std<1e-12 becomes 1. Missing flags and the computational median=0 fallback for an entirely unobserved column remain explicit. Unknown outcomes are not negative examples. Trees use the same TRAIN-standardized inputs to preserve the historical recipe.
 
-Log13 用 row-mean BCE + 0.5×.01×||β||²，截距不惩罚，无 class/month weighting，零 slopes+TRAIN prevalence logit 初始化，固定 damped Newton，gradient≤1e−9，最多200轮/60次线搜索，无重试。Ridge 对 gR 最小化 mean squared error +.01×||β||²，因此 sklearn `alpha=N*.01`，cholesky、有截距。
+Log13 minimizes row-mean BCE + 0.5*.01*||beta||^2 with an unpenalized intercept and no class/month weighting. It starts with zero slopes and a TRAIN-prevalence logit intercept, uses fixed damped Newton optimization, gradient<=1e-9, at most 200 iterations/60 line-search steps, and no retries. Ridge minimizes mean squared error +.01*||beta||^2 on gR, so sklearn `alpha=N*.01`, using cholesky with an intercept.
 
-两个 HGB 均 30 轮、depth2、leaves4、bins32、lr=.03、L2=1、minleaf=max(50,ceil(.1N))、seed718；无 early stopping、validation_fraction、warm start、class weight。binary loss=log_loss；relative loss=squared_error。月折分别从头 expanding fit。
+Both HGB models use 30 iterations, depth2, leaves4, bins32, lr=.03, L2=1, minleaf=max(50,ceil(.1N)) and seed718. There is no early stopping, validation_fraction, warm start or class weighting. Binary loss is log_loss; relative loss is squared_error. Each monthly expanding fold fits from scratch.
 
-参数和目标选择过程须区分：binary 数值配方继承早期 TRAIN 内控制实验（F1训练2023-10—12/评价2024-01—04，F2训练截至2024-04/评价2024-05—08；Log12 .01为赢家，HGBdepth2是固定比较），后来的 joint-T 特征与规则/主模型叙事参考过已见开发诊断，不能声称整个选择从未看开发结果。身份修复固定参数、无新搜索。relative Ridge λ 在 **2024-02/05/08** 三个早期历史折，只比较 .01/.1 的等月 graded NDCG50，选择 .01；平局≤1e−12 选更强正则 .1。HGB 固定，没有树网格搜索。[冻结早期选择](config/early_selection.json) 及选择函数/测试随包提供，此次没有重新搜索。旧 split 名称 validation/dev 不恢复独立性。
+Numerical parameter selection must be distinguished from target/model development. Binary numerical recipes inherit early historical controls: F1 trains on 2023-10 through 2023-12 and evaluates 2024-01 through 2024-04; F2 trains through 2024-04 and evaluates 2024-05 through 2024-08. Log12 .01 was the winner; HGB depth2 was retained as a fixed comparator. Later joint-T features and rule/main-model interpretation used already-seen development diagnostics, so the entire selection process cannot be described as blind to development results. Identity correction keeps parameters fixed with no new search. Relative Ridge lambda selection uses only **2024-02/05/08**, comparing .01/.1 by equal-month graded NDCG50; .01 is selected, with ties<=1e-12 favoring stronger regularization .1. HGB is fixed, with no tree grid search. The [frozen early selection](config/early_selection.json), selection function and tests are included; the search was not rerun. Historical validation/dev split names do not restore independence.
 
-## 规则与指标
+## Rules and metrics
 
-所有方法对相同候选评分，score 降序→当前 count 降序→pageid 升序。volume=当前 count；strong CS=`log1p(x_M)−log1p(T_M)`；momentum 用当前/前月日均 ratio 延续，relative 另保留 ratio clip[.5,2] 的固定版本。PV forecast=`x_M*exp(PV14logtrend)`，PV 不完整时 fallback=x_M；分别 against U/T 作 log margin。
+All methods score the same candidates, with score descending, current count descending and pageid ascending as tie order. Volume=current count; strong CS=`log1p(x_M)-log1p(T_M)`; momentum continues the current/previous daily-rate ratio, with an additional fixed ratio clip[.5,2] version in the relative benchmark. PV forecast=`x_M*exp(PV14logtrend)`; incomplete PV falls back to x_M. PV scores use log margins against U or T.
 
-浮点 tie 必须可追溯：每次独立重构规则公式，误差≤1e−12 后保留原 canonical 规则分数，与原 corrected evaluators 一致；这是规则浮点/tie 处理，不用于代替 ML 重训。四个 ML 全部重训、每月完整排序精确相同。
+Floating-point ties are traceable: each run independently reconstructs rule formulas and retains the original canonical rule scores only after checking errors<=1e-12, matching the corrected evaluators. This handles rule arithmetic/ties and does not substitute for ML retraining. All four ML models were refitted, with identical complete rankings each month.
 
-DCG=Σgain/log2(rank+1)。binary gain=event；relative 主 gain=gR，直接 identity gain：**没有第二次 log，没有 2^gain−1**。NDCG 除以该月理想排序 DCG。AP 使用完整 candidate ranking 的 rank-tiebroken average precision，不是截断 AP@50。macro 指各有效月等权；TP/slots/events 累计，micro P/R 和 pooled gR capture 按对应总量计算，不能与 macro 混用。未知候选不删、不补、不 refill；任一 future label unknown 则整月 NA；P=0 月 precision/TP=0，其 NDCG/AP/recall NA。
+DCG=sum(gain/log2(rank+1)). Binary gain=event; relative gain=gR directly: **no second log and no 2^gain-1**. NDCG divides by that month's ideal-ranking DCG. AP is rank-tiebroken average precision over the complete candidate ranking, not truncated AP@50. Macro averages valid months equally; TP/slots/events are accumulated, while micro precision/recall and pooled gR capture use corresponding totals. Do not interchange macro and micro. Unknown candidates are not deleted, filled or replaced; any unknown future label makes the entire month NA. For a zero-event month, precision/TP=0 and NDCG/AP/recall are NA.
 
-## 从公共源下载与从缓存清洗
+## Public acquisition and cached preparation
 
-默认重训**不联网**，使用 `data/panel.json.gz`（约2MB派生快照）与对应校验和。`data/provenance.json` 保存便携相对源路径、原工件 SHA256 与包输入 SHA256；`public_download_provenance.json` 是公共 dump 的 URL/校验记录。派生数据包含公共文章名称/pageid和统计量，不含编辑者、revision 正文、评论、凭据或机器路径。
+Default retraining is **offline**, using `data/panel.json.gz`, an approximately 2MB derived snapshot, and corresponding checksums. `data/provenance.json` stores portable relative source paths and SHA256 hashes for original artifacts and package inputs; `public_download_provenance.json` records public dump URLs/checksums. Derived data contain public article names/pageids and statistics, but no editor identities, revision text, comments, credentials or machine paths.
 
-以下命令在全新 `wikiflow/local_data/` 下采集，保留 raw/cache，不替换已存在输出。重新获取的当前名单/API历史可能与冻结 vintage 不同，不能自动宣称精确重现旧实验。复现旧 scope 时用已提供的固定 `data/title_mapping.csv`。
+The following commands acquire into a fresh `wikiflow/local_data/`, preserve raw/cache files and refuse existing outputs. A fresh portfolio or API history may differ from the frozen vintage and does not automatically reproduce the original experiment exactly. Use the supplied fixed `data/title_mapping.csv` to reproduce the original scope.
 
 ```bash
 mkdir -p wikiflow/local_data
@@ -130,7 +130,7 @@ python -m wikiflow.acquisition revisions --mapping wikiflow/data/title_mapping.c
   --output wikiflow/local_data/revisions.json --coverage wikiflow/local_data/coverage.json
 ```
 
-完整 raw 重建需逐月取得 **2022-09—2026-08** 的 `incoming_YYYY-MM.csv.gz`，耗费较大，不是 quickstart。本次没有重新下载。使用已有缓存的清洗命令：
+Complete raw reconstruction requires monthly `incoming_YYYY-MM.csv.gz` files for **2022-09 through 2026-08**, which is expensive and outside the quickstart. No new download was performed during verification. Prepare from existing caches with:
 
 ```bash
 python -m wikiflow.preparation --mapping wikiflow/data/title_mapping.csv \
@@ -139,7 +139,7 @@ python -m wikiflow.preparation --mapping wikiflow/data/title_mapping.csv \
   --output wikiflow/local_data/rebuilt_panel.json.gz
 ```
 
-清洗结果可直接接入同一固定训练/核验入口（必须匹配冻结 benchmark 的 keys、label、资格与数值容限，否则先停止诊断）：
+The prepared panel can feed the same fixed fitting/verification entry point. Its keys, labels, eligibility and numeric tolerances must match the frozen benchmark; otherwise stop and diagnose first:
 
 ```bash
 python -m wikiflow.reproduce --mode refit \
@@ -147,6 +147,6 @@ python -m wikiflow.reproduce --mode refit \
   --output wikiflow/runs/my-cached-refit
 ```
 
-采集 revision ID/parent/timestamp/size/minor/SHA 和覆盖区间，检查 parent 连续性；不请求用户名、评论、正文。缺覆盖/parent/隐去记录则 quality unknown，不能造零编辑。PV 区分 API 显式0和缺日期。所有下载及清洗拒绝 holdout；重新下载不认证历史 title-slot 同名身份，需沿用隔离策略和另行审查。
+Acquisition retains revision ID/parent/timestamp/size/minor/SHA and coverage intervals and checks parent continuity. It does not request usernames, comments or text. Missing coverage, parents or hidden records imply unknown quality, not zero edits. PV parsing distinguishes explicit API zero from missing dates. Acquisition and preparation reject the holdout. Fresh downloads do not certify historical homonym title-slot identity; retain the quarantine policy and review separately.
 
-[缓存重建检查](results/cached_preparation_verification.json) 和公共合成 fixture 测试验证采集解析/清洗边界。历史特征形成时存在 NumPy/标准库两种浮点求和路径，新的原始缓存重建允许浮点容限；用于位级预测复现的冻结派生快照保持原浮点值。完整联网采集、实际发布时延认证、全目录历史身份认证和封存 September 测试仍未执行。
+The [cached reconstruction check](results/cached_preparation_verification.json) and public synthetic fixtures verify acquisition parsing and preparation boundaries. Historical feature generation used both NumPy and standard-library summation paths, so raw-cache reconstruction allows audited floating-point tolerances. The frozen derived snapshot retains original floats for exact prediction reproduction. Full fresh network acquisition, historical release-latency certification, portfolio-wide historical identity certification and sealed September testing remain unperformed.
