@@ -1,5 +1,5 @@
 {
-  "scope": "current course subset offline validation only",
+  "scope": "historical 48-fit course validation and current zero-fit evaluation replay",
   "actual_fixed_fits": 48,
   "binary_log13_fits": 24,
   "relative_ridge12_fits": 24,
@@ -18,5 +18,9 @@
     "binary_log13": 9.71445146547012e-16,
     "relative_ridge12": 0.0
   },
-  "monthly_metric_max_error": 5.551115123125783e-17
+  "monthly_metric_max_error": 5.551115123125783e-17,
+  "evaluation_update_new_fits": 0,
+  "evaluation_update_test_count": 26,
+  "evaluation_update_predictions_and_training_unchanged": true,
+  "non_April_monthly_values_unchanged": true
 }

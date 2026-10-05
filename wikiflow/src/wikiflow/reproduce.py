@@ -150,6 +150,7 @@ def run(mode,output,prepared_panel=None):
     rowmap=validate_panel(panel)
     rows=panel['rows'];labels=panel['labels'];ca=[rowmap[k] for k in panel['evaluation_keys']]
     if len(rows)!=11080 or len(ca)!=5388:raise ValueError('Benchmark support changed')
+    excluded=[r['key'] for r in ca if not labels[r['key']]['known']]
     expected=load(ROOT/'data/expected_scores.json.gz');folds=load(ROOT/'data/folds.json')
     if set(expected)!=set(BINARY+RELATIVE):raise ValueError('Unexpected course score methods')
     if any(set(ss)!=set(panel['evaluation_keys']) for ss in expected.values()):
@@ -202,7 +203,8 @@ def run(mode,output,prepared_panel=None):
     write_csv(output/'summary_at50.csv',[r for r in summaries if r['K']==50])
     write_csv(output/'monthly_at50.csv',[r for r in monthly if r['K']==50])
     report=dict(status='PASS',mode=mode,actual_fits=len(trace),fixed_model_fits={n:sum(x['model']==n for x in trace) for n in MODELS},
-        months=FORECASTS,rows=11080,candidates=5388,seed=718,threads=2,source_raw_downloads=0,new_tuning_fits=0,holdout_read=False,
+        months=FORECASTS,rows=11080,candidates=5388,evaluated_candidates=len(ca)-len(excluded),
+        excluded_missing_label_keys=excluded,seed=718,threads=2,source_raw_downloads=0,new_tuning_fits=0,holdout_read=False,
         prepared_panel_used=prepared_panel is not None,prepared_value_max_error=prepared_error,
         python=platform.python_version(),numpy=np.__version__,scipy=scipy.__version__,sklearn=sklearn.__version__,threadpoolctl=threadpoolctl.__version__,
         prediction_tolerance=SCORE_TOLERANCE,metric_tolerance=METRIC_TOLERANCE,model_prediction_max_error=prediction_error,

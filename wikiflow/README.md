@@ -26,18 +26,18 @@ python -m wikiflow.reproduce --mode refit --output wikiflow/runs/my-refit
 python -m wikiflow.reproduce --mode replay --output wikiflow/runs/my-replay
 ```
 
-`replay` recalculates metrics from stored predictions and performs **0 fits**. Both modes produce sealed predictions, monthly and aggregate CSVs, and `verification.json`; refit also produces `fit_trace.json`. The committed [verification](results/verification.json), [48-fit trace](results/fit_trace.json) and [fit accounting](results/fit_accounting.json) record an actual offline refit. The [subset integrity report](results/subset_integrity.json) checks the projection from the previous commit. Parameters in `config/benchmark.json` and `config/early_selection.json` document fixed recipes, rather than exposing a new search or runtime tuning interface.
+`replay` recalculates metrics from stored predictions and performs **0 fits**. Both modes produce sealed predictions, monthly and aggregate CSVs, and `verification.json`; refit also produces `fit_trace.json`. The [48-fit trace](results/fit_trace.json) preserves the previous fixed refit; the current [verification](results/verification.json) records a zero-fit evaluation replay. [Fit accounting](results/fit_accounting.json) distinguishes the two. The [subset integrity report](results/subset_integrity.json) checks the projection from the previous commit. Parameters in `config/benchmark.json` and `config/early_selection.json` document fixed recipes, rather than exposing a new search or runtime tuning interface.
 
 ## Retained results at K=50
 
-The shared pool contains **5,388 article-months** across 24 development months (2024-09 through 2026-08): 23 have complete labels, 22 contain events, and there are 182 events and 1,150 Top50 slots. April 2026 has unknown future labels and its entire month's metrics are NA. April 2025 has no events: TP/precision contribute zero while NDCG/AP/recall are NA.
+The raw candidate pool contains **5,388 article-months**; evaluation uses **5,387** across 24 development months (2024-09 through 2026-08), with 23 event months, 190 events and 1,200 Top50 slots. Rows with missing ground-truth labels are excluded from evaluation. April 2025 has no events: TP/precision contribute zero while NDCG/AP/recall are NA.
 
 | Task | Method | Macro task NDCG50 | Macro full-list AP | Cumulative TP50 |
 |---|---|---:|---:|---:|
-| Binary | Volume | 0.123384165982 | 0.062143794623 | 45 |
-| Binary | Log13 | 0.261323643627 | 0.127705211410 | 75 |
-| Relative | Volume | 0.092810605545 | 0.062143794623 | 45 |
-| Relative | Ridge12 | 0.138377139655 | 0.099722557570 | 63 |
+| Binary | Volume | 0.123528442060 | 0.061531406346 | 47 |
+| Binary | Log13 | 0.265096468808 | 0.128429231632 | 81 |
+| Relative | Volume | 0.089714087859 | 0.061531406346 | 47 |
+| Relative | Ridge12 | 0.144105150570 | 0.099854317205 | 69 |
 
 The [summary](results/summary_at50.csv) and [monthly table](results/monthly_at50.csv) contain only these four task/method pairs. Relative NDCG uses `gR` directly. AP always uses binary events across the full ranking, even when scores come from a relative model. These repeatedly studied historical months are **development backtests**, not independent tests. The sealed 2026-09 holdout is absent and remains unopened. Subsetting does not undo earlier model/feature development or establish stable ML superiority.
 
@@ -49,7 +49,7 @@ CS inputs span 2022-09 through 2026-08. Model target months start at 2023-10; fe
 
 The [identity policy](config/identity_policy.json) retains **v1**: pageid 79745475 (Daniel Kokotajlo homonym) is blocked in TRAIN and evaluation, director 62422990 history is not transferred, and existing exclusions 1164/72417803 remain. Naevis 78522383 remains review-only.
 
-**Known Brainiac limitation, retained without correction:** pageid 525160 identifies the character, but before the August 2026 title swap the cached literal title `Brainiac` identifies disambiguation page 384942. CS/PV under that title were joined to character revision metadata. The mismatch affects 24 expanded rows, five evaluation rows and every rolling TRAIN fold; correct character exposure/labels remain unknown. July dump canonicalization vintage is also uncertified. This package preserves the original v1 rows, labels and metrics for reproducibility; it does not apply a newer identity correction, quarantine extra rows, flip labels or infer zero traffic. See the [audit](docs/audit.md) for the evidence boundary.
+**Known Brainiac limitation, retained without correction:** pageid 525160 identifies the character, but before the August 2026 title swap the cached literal title `Brainiac` identifies disambiguation page 384942. CS/PV under that title were joined to character revision metadata. The mismatch affects 24 expanded rows, five evaluation rows and every rolling TRAIN fold; correct character exposure/labels remain unknown. July dump canonicalization vintage is also uncertified. This package preserves the original v1 rows and labels for reproducibility; it does not apply a newer identity correction, quarantine extra rows, flip labels or infer zero traffic. See the [audit](docs/audit.md) for the evidence boundary.
 
 ## Labels, candidates and training
 
@@ -70,7 +70,7 @@ Evaluation requires valid identity, current count>=100, seven published months t
 
 TRAIN expands over quality-complete, current-cold rows **without the edit-amount candidate filter**. Each fold uses only known outcomes with target<M; every row uses features no later than its own target-1. Scalers use only that fold's TRAIN. [Design](docs/design.md) lists all 12 original features, Log13's additional joint-T margin, fixed objectives and inherited early selection.
 
-Score ties use current count descending then pageid ascending. DCG is sum(gain/log2(rank+1)), with gain=event for binary and gain=gR for relative; no second log or exponential gain. AP uses the complete ordered ranking. Macro metrics average valid months equally; micro precision/recall and pooled graded capture use summed totals. Unknown candidates remain in the pool, make their whole month NA, and are neither removed nor replaced.
+Score ties use current count descending then pageid ascending. DCG is sum(gain/log2(rank+1)), with gain=event for binary and gain=gR for relative; no second log or exponential gain. AP uses the complete ordered ranking. Macro metrics average valid months equally; micro precision/recall and pooled graded capture use summed totals.
 
 ## Acquisition and preparation commands
 

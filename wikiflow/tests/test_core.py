@@ -64,10 +64,22 @@ class Contracts(unittest.TestCase):
         self.assertEqual(q['TP'],1)
         self.assertAlmostEqual(q['AP'],(1+2/3)/2)
         labels[rr[2]['key']]=make_label(None,200)
-        self.assertEqual(rank_metric(rr,labels,scores,2)['status'],'unknown')
+        self.assertEqual(rank_metric(rr,labels,scores,2)['status'],'defined')
+        self.assertEqual(rank_metric(rr,labels,scores,2)['N'],2)
         with self.assertRaises(ValueError):rank_metric(rr,labels,{rr[0]['key']:1},2)
 
-    def test_macro_micro_and_unknown_month_support(self):
+    def test_missing_labels_are_excluded_before_topk_without_mutating_inputs(self):
+        rr=[row(pid=1),row(pid=2),row(pid=3)]
+        labels={r['key']:make_label(a,200) for r,a in zip(rr,[None,600,200])}
+        scores={r['key']:float(3-i) for i,r in enumerate(rr)}
+        q=rank_metric(rr,labels,scores,1)
+        self.assertEqual(q,rank_metric(rr[1:],labels,{r['key']:scores[r['key']] for r in rr[1:]},1))
+        self.assertEqual((q['N'],q['events'],q['TP'],q['actual_K']),(2,1,1,1))
+        self.assertEqual((q['binary_NDCG'],q['relative_NDCG']),(1.,1.))
+        self.assertEqual(len(rr),3);self.assertEqual(len(scores),3)
+        self.assertFalse(labels[rr[0]['key']]['known'])
+
+    def test_macro_micro_and_month_support(self):
         rows=[dict(status='defined',events=1,TP=1,actual_K=5,binary_NDCG=1.,relative_NDCG=1.,AP=1.,Precision=.2,Recall=1.,selected_gR=1.,total_gR=1.),
               dict(status='defined',events=9,TP=0,actual_K=5,binary_NDCG=0.,relative_NDCG=0.,AP=.1,Precision=0.,Recall=0.,selected_gR=0.,total_gR=9.)]
         q=aggregate(rows)

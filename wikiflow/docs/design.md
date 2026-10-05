@@ -43,7 +43,7 @@ Bounds are fixed heuristics, not probabilities. U/x/T/actual have monthly transi
 
 The expanded pool requires valid identity, seven published monthly inputs c-6 through c, current count>=100, complete metadata/editorial coverage, `I_c/D_c <= U_M/D_M`, and `I_c <= U_c` where U_c is computed using c-6 through c-1. It contains 11,080 rows. TRAIN does not impose the edit-amount filter.
 
-The evaluation pool additionally requires each nonminor edit's absolute parent-net-byte change<500 and their cumulative absolute change<1000 in the two complete UTC months `[start of M-2, start of M)`. Equal thresholds exclude; reverts contribute; minor revisions do not. Missing parent state, incomplete coverage or hidden records imply unknown quality. Net bytes cannot detect equal-size rewrites. All methods use the same 5,388 candidates and candidate order. Unknown future labels do not affect candidate selection.
+The evaluation pool additionally requires each nonminor edit's absolute parent-net-byte change<500 and their cumulative absolute change<1000 in the two complete UTC months `[start of M-2, start of M)`. Equal thresholds exclude; reverts contribute; minor revisions do not. Missing parent state, incomplete coverage or hidden records imply unknown quality. Net bytes cannot detect equal-size rewrites. All methods use the same 5,388 raw candidates and 5,387 evaluation rows. Unknown future labels do not affect prediction-time candidate selection.
 
 ## Features and TRAIN preprocessing
 
@@ -93,12 +93,12 @@ Volume scores are float(I_c). Log13 scores are fitted event probabilities. Ridge
 | Micro | Pooled hits divided by pooled slots/events |
 | Graded capture | Summed selected gR divided by total gR over complete months |
 
-K values are 5,10,20,50,100,200. Any unknown candidate outcome makes all metrics for that whole month NA; candidates are not dropped or backfilled. A complete zero-event month contributes TP/precision zero, while NDCG/AP/recall are NA. April 2026 is unknown; April 2025 is event-free. Overall support is 23 complete months, 22 event months, 182 events and 1,150 Top50 slots.
+K values are 5,10,20,50,100,200. A complete zero-event month contributes TP/precision zero, while NDCG/AP/recall are NA. April 2025 is event-free. Overall evaluation support is 24 months, 23 event months, 190 events and 1,200 Top50 slots.
 
 ## Reproduction and remaining work
 
 The [README](../README.md) supplies dependency, offline refit, replay, public download and cached preparation commands. Acquisition preserves existing outputs and requests no editor names, comments or revision text. Raw data and sessions are not committed. Default refit uses a small frozen derived snapshot and retained scores, with input/scaler/key checks and predictions sealed before evaluation. It performs 48 fits; replay performs zero. A new raw-cache preparation must match keys/labels/eligibility exactly and features within audited numerical tolerance.
 
-The [integrity report](../results/subset_integrity.json) verifies that subsetting removed extra score/rule fields and renamed a presentation schema without changing v1 data or labels. The [verification](../results/verification.json) checks 48 fits, exact monthly model ranks and 1,728 metric fields. Acquisition/preparation fixtures and numerical/metric tests are offline.
+The [integrity report](../results/subset_integrity.json) verifies that subsetting removed extra score/rule fields and renamed a presentation schema without changing v1 data or labels. The retained fit trace checks the previous 48 fits and monthly model ranks; current [verification](../results/verification.json) checks 1,728 replayed metric fields with zero new fits. Acquisition/preparation fixtures and numerical/metric tests are offline.
 
 Future historical identity repair, release-vintage certification, fresh acquisition, independent holdout evaluation, production latency validation and uncertainty estimation remain outside this package. Brainiac repair would require valid former-title exposure data and every affected TRAIN fold to be addressed; removing an evaluation row alone would not certify clean models.

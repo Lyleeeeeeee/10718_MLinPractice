@@ -1,10 +1,10 @@
 {
   "status": "PASS",
-  "mode": "refit",
-  "actual_fits": 48,
+  "mode": "replay",
+  "actual_fits": 0,
   "fixed_model_fits": {
-    "binary_log13": 24,
-    "relative_ridge12": 24
+    "binary_log13": 0,
+    "relative_ridge12": 0
   },
   "months": [
     "2024-09",
@@ -34,6 +34,10 @@
   ],
   "rows": 11080,
   "candidates": 5388,
+  "evaluated_candidates": 5387,
+  "excluded_missing_label_keys": [
+    "2026-04:80445288"
+  ],
   "seed": 718,
   "threads": 2,
   "source_raw_downloads": 0,
@@ -48,21 +52,15 @@
   "threadpoolctl": "3.6.0",
   "prediction_tolerance": 1e-10,
   "metric_tolerance": 5e-12,
-  "model_prediction_max_error": {
-    "binary_log13": 9.71445146547012e-16,
-    "relative_ridge12": 0.0
-  },
-  "all_monthly_rank_orders_match": {
-    "binary_log13": true,
-    "relative_ridge12": true
-  },
-  "TRAIN_scaler_max_error": 2.8421709430404007e-13,
+  "model_prediction_max_error": {},
+  "all_monthly_rank_orders_match": {},
+  "TRAIN_scaler_max_error": 0.0,
   "baseline_formula_max_error": {
     "volume": 0.0
   },
   "canonical_baseline_floats_retained": false,
   "monthly_metric_max_error": 5.551115123125783e-17,
   "monthly_metric_checks": 1728,
-  "elapsed_seconds": 3.8881418330129236,
+  "elapsed_seconds": 0.436087166890502,
   "development_only": true
 }

@@ -15,7 +15,7 @@
     "sessions/2026-10-04_identity_correction/identity_policy.py": "e58454b196c48b532437022fd8073bafa44518206a103e08581756464766d928"
   },
   "package_sha256": {
-    "data/expected_monthly.json.gz": "6d79f8e599ae114204bde794c231531c612771db4e2e250df34bd20f2846b7a4",
+    "data/expected_monthly.json.gz": "e89aba528def0cb435c38b2a2ce7b27da7b863c48a90f13736f795b48d6cc032",
     "data/expected_scores.json.gz": "9b021499ca5cd3ce58e8f4c83b006bfff163449ca5237f07075136b7ea80e2e3",
     "data/folds.json": "7b2f0acc4b2ad2bdc87617c15aa5a032f5e22a5d502143ddd7387e5e331a32a4",
     "data/panel.json.gz": "8727d27c1b70096971bcfd8bf8f0d9f6270dc9a0e8d9cdcb613cdfa0282e1fcf",
@@ -27,5 +27,6 @@
     "config/identity_policy.json": "4546e8d5727f3388592109a4ef221b465cede08cc542e28f4873d1e8cab2616a"
   },
   "complete_benchmark_commit": "ccf65a63287330870b43b7cb563d4cd20348d3a8",
-  "identity_version": "v1 retained; Brainiac limitation documented without a correction"
+  "identity_version": "v1 retained; Brainiac limitation documented without a correction",
+  "evaluation_updated_from_commit": "48e644090b01d6f1c3df26d0e6ed2117e882a3ec"
 }

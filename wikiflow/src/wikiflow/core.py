@@ -112,9 +112,12 @@ def ordered(rows,scores):
 def rank_metric(rows,labels,scores,k):
     if k<=0 or not rows:
         raise ValueError('Positive K and nonempty candidates required')
-    ranked = ordered(rows,scores);ak=min(k,len(rows))
+    if set(scores)!={r['key'] for r in rows}:
+        raise ValueError('Exact candidate score keys required')
+    rows = [r for r in rows if labels[r['key']]['known']]
+    ranked = ordered(rows,{r['key']:scores[r['key']] for r in rows});ak=min(k,len(rows))
     base = dict(actual_K=ak,N=len(rows))
-    if any(not labels[r['key']]['known'] for r in rows):
+    if not rows:
         return dict(base,status='unknown',events=None,TP=None,Precision=None,Recall=None,AP=None,
                     binary_NDCG=None,relative_NDCG=None,selected_gR=None,total_gR=None)
     ls = [labels[r['key']] for r in ranked]
