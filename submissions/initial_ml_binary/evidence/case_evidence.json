@@ -1,0 +1,117 @@
+{
+  "scope": "Two illustrative eligible product/model surges; no Brainiac rows.",
+  "source": "Retained baseline panel and same-destination incoming histories, independently checked by modern_models_analysis.py in the case audit.",
+  "cases": [
+    {
+      "article": "Gemma (language model)",
+      "pageid": 76155063,
+      "target_month": "2026-04",
+      "previous_incoming": 362,
+      "previous_days": 31,
+      "target_incoming": 2340,
+      "target_days": 30,
+      "T": 668.8145516129032,
+      "eligible": true,
+      "y": 1,
+      "history": [
+        {
+          "month": "2025-09",
+          "incoming": 238
+        },
+        {
+          "month": "2025-10",
+          "incoming": 291
+        },
+        {
+          "month": "2025-11",
+          "incoming": 181
+        },
+        {
+          "month": "2025-12",
+          "incoming": 174
+        },
+        {
+          "month": "2026-01",
+          "incoming": 313
+        },
+        {
+          "month": "2026-02",
+          "incoming": 407
+        },
+        {
+          "month": "2026-03",
+          "incoming": 362
+        },
+        {
+          "month": "2026-04",
+          "incoming": 2340
+        }
+      ],
+      "edit_activity": {
+        "max_abs_nonminor": 0,
+        "cumulative_abs_nonminor": 0,
+        "coverage_complete": true,
+        "window_start": "2026-02-01T00:00:00Z",
+        "window_end_exclusive": "2026-04-01T00:00:00Z"
+      }
+    },
+    {
+      "article": "Sora (text-to-video model)",
+      "pageid": 76106601,
+      "target_month": "2025-10",
+      "previous_incoming": 3012,
+      "previous_days": 30,
+      "target_incoming": 12634,
+      "target_days": 31,
+      "T": 4680.3,
+      "eligible": true,
+      "y": 1,
+      "history": [
+        {
+          "month": "2025-03",
+          "incoming": 3078
+        },
+        {
+          "month": "2025-04",
+          "incoming": 2674
+        },
+        {
+          "month": "2025-05",
+          "incoming": 3128
+        },
+        {
+          "month": "2025-06",
+          "incoming": 2744
+        },
+        {
+          "month": "2025-07",
+          "incoming": 3280
+        },
+        {
+          "month": "2025-08",
+          "incoming": 3966
+        },
+        {
+          "month": "2025-09",
+          "incoming": 3012
+        },
+        {
+          "month": "2025-10",
+          "incoming": 12634
+        }
+      ],
+      "edit_activity": {
+        "max_abs_nonminor": 95,
+        "cumulative_abs_nonminor": 437,
+        "coverage_complete": true,
+        "window_start": "2025-08-01T00:00:00Z",
+        "window_end_exclusive": "2025-10-01T00:00:00Z"
+      }
+    }
+  ],
+  "source_sha256": {
+    "modern_models_evidence.json": "006dad1ec41398cb5e484088ea00b9c6ee7cb64cf187ccfd40451d0b9c521e81",
+    "modern_models_analysis.py": "aa68f3a3fbe41627bd673bdaad1e8e99d60e473cd7e2cfc50c03e4d482fad965",
+    "../../wikiflow/data/panel.json.gz": "8727d27c1b70096971bcfd8bf8f0d9f6270dc9a0e8d9cdcb613cdfa0282e1fcf"
+  }
+}

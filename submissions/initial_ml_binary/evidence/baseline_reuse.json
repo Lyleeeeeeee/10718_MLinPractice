@@ -1,0 +1,11 @@
+{
+  "base_commit": "c78811f470da732f3e0023494be45cfff6d18940",
+  "unchanged_existing_files": {
+    "wikiflow/src/wikiflow/core.py": "a94a816fa95193cce496ec65905f10544cf30d2353a3a8f4473377233eeb25e5",
+    "wikiflow/src/wikiflow/learners.py": "025e3addf75c4781624ff9cbed4b474809795b937dadec1b26b0aae44a3d3d22",
+    "wikiflow/src/wikiflow/reproduce.py": "cee3d7ef4620ee13181b8cfa85195a70a2bb9d8e1909cfad570d254250c75de3",
+    "wikiflow/data/panel.json.gz": "8727d27c1b70096971bcfd8bf8f0d9f6270dc9a0e8d9cdcb613cdfa0282e1fcf",
+    "wikiflow/data/public_download_provenance.json": "efce6b18676fdfbe30f71d7e7d68d030905ef24c0c3cdb0d3627e7504dfdec6d",
+    "wikiflow/data/title_mapping.csv": "e09d5daf9c53e7f48f8cb785912ba78b20b1a225afb3e44c23f8a2448ca64f4c"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "volume": {
+    "path": "research/results/batch1/development_predictions_sealed.json.gz",
+    "sha256": "4a9bead8d11cf10b64d9bc4c41ef2dfc6d1932ddad77728b3e6f7b2a0e1a1bd7"
+  },
+  "cs_momentum": {
+    "path": "research/results/batch1/development_predictions_sealed.json.gz",
+    "sha256": "4a9bead8d11cf10b64d9bc4c41ef2dfc6d1932ddad77728b3e6f7b2a0e1a1bd7"
+  },
+  "binary_log13": {
+    "path": "research/results/batch1/development_predictions_sealed.json.gz",
+    "sha256": "4a9bead8d11cf10b64d9bc4c41ef2dfc6d1932ddad77728b3e6f7b2a0e1a1bd7"
+  },
+  "binary_dynamics_hgb_d2_l21": {
+    "path": "research/results/batch1/development_predictions_sealed.json.gz",
+    "sha256": "4a9bead8d11cf10b64d9bc4c41ef2dfc6d1932ddad77728b3e6f7b2a0e1a1bd7"
+  },
+  "binary_missing_0.01": {
+    "path": "research/results/batch2/development_predictions_sealed.json.gz",
+    "sha256": "b6adacc3eb0631eb9ec9e9724205628c120fef2b6d00ab98ecc26e80e2a247dd"
+  },
+  "pairwise_expanded_0.01_a0.25": {
+    "path": "research/results/batch4_ties_v2/predictions_sealed.json.gz",
+    "sha256": "e9df0378ae9c7f256789e1836d45f643c02460e69eb68f917bbfa406798423ba"
+  },
+  "binary": {
+    "path": "research/results/batch5_nonlinear_focus/predictions_sealed.json.gz",
+    "sha256": "b253405efdf63955b5ab9549adddf1e74b51afa932da6b14e626a2203f93c48f"
+  },
+  "rank50_base": {
+    "path": "research/results/batch8_at50_ranker_semantics/predictions_sealed.json.gz",
+    "sha256": "38488f6f6c193f473b886bba491d5ebbf90cc792af48a35db2e067e26837485a"
+  },
+  "rank50_missing": {
+    "path": "research/results/batch8_at50_ranker_semantics/predictions_sealed.json.gz",
+    "sha256": "38488f6f6c193f473b886bba491d5ebbf90cc792af48a35db2e067e26837485a"
+  },
+  "rank50_svd": {
+    "path": "research/results/batch8_at50_ranker_semantics/predictions_sealed.json.gz",
+    "sha256": "38488f6f6c193f473b886bba491d5ebbf90cc792af48a35db2e067e26837485a"
+  },
+  "rank50_lda": {
+    "path": "research/results/batch8_at50_ranker_semantics/predictions_sealed.json.gz",
+    "sha256": "38488f6f6c193f473b886bba491d5ebbf90cc792af48a35db2e067e26837485a"
+  },
+  "rank50_intro": {
+    "path": "research/results/batch8_at50_ranker_semantics/predictions_sealed.json.gz",
+    "sha256": "38488f6f6c193f473b886bba491d5ebbf90cc792af48a35db2e067e26837485a"
+  }
+}

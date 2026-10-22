@@ -1,0 +1,71 @@
+{
+  "overall": {
+    "binary": {
+      "id": "binary_category_1",
+      "task": "binary",
+      "kind": "category",
+      "complexity": 3,
+      "lambda": 1.0,
+      "validation_score": 0.13333333333333333,
+      "validation_tie_AP": 0.1349398420550093
+    }
+  },
+  "by_variant": [
+    {
+      "id": "binary_missing_0.01",
+      "task": "binary",
+      "kind": "missing",
+      "complexity": 0,
+      "lambda": 0.01,
+      "validation_score": 0.06666666666666667,
+      "validation_tie_AP": 0.12937477808022013
+    },
+    {
+      "id": "binary_svd_0.01",
+      "task": "binary",
+      "kind": "svd",
+      "complexity": 1,
+      "lambda": 0.01,
+      "validation_score": 0.06666666666666667,
+      "validation_tie_AP": 0.11599510544538366
+    },
+    {
+      "id": "binary_lda_1",
+      "task": "binary",
+      "kind": "lda",
+      "complexity": 2,
+      "lambda": 1.0,
+      "validation_score": 0.06666666666666667,
+      "validation_tie_AP": 0.13296478409603746
+    },
+    {
+      "id": "binary_category_1",
+      "task": "binary",
+      "kind": "category",
+      "complexity": 3,
+      "lambda": 1.0,
+      "validation_score": 0.13333333333333333,
+      "validation_tie_AP": 0.1349398420550093
+    },
+    {
+      "id": "binary_embedding_1",
+      "task": "binary",
+      "kind": "embedding",
+      "complexity": 4,
+      "lambda": 1.0,
+      "validation_score": 0.0,
+      "validation_tie_AP": 0.053501481709877716
+    }
+  ],
+  "semantic_control_recipe": {
+    "binary": {
+      "id": "binary_category_1",
+      "task": "binary",
+      "kind": "category",
+      "complexity": 3,
+      "lambda": 1.0,
+      "validation_score": 0.13333333333333333,
+      "validation_tie_AP": 0.1349398420550093
+    }
+  }
+}

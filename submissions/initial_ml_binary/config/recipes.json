@@ -1,0 +1,768 @@
+{
+  "binary_log13": {
+    "id": "binary_log13",
+    "batch": "original",
+    "task": "binary",
+    "features": "original",
+    "family": "linear",
+    "lambda": 0.01
+  },
+  "volume": {
+    "id": "volume",
+    "batch": "rule"
+  },
+  "cs_momentum": {
+    "id": "cs_momentum",
+    "batch": "rule"
+  },
+  "binary_original_linear_0.001": {
+    "id": "binary_original_linear_0.001",
+    "task": "binary",
+    "features": "original",
+    "family": "linear",
+    "complexity": 0,
+    "lambda": 0.001,
+    "batch": "b1"
+  },
+  "binary_original_linear_0.01": {
+    "id": "binary_original_linear_0.01",
+    "task": "binary",
+    "features": "original",
+    "family": "linear",
+    "complexity": 0,
+    "lambda": 0.01,
+    "batch": "b1"
+  },
+  "binary_original_linear_0.1": {
+    "id": "binary_original_linear_0.1",
+    "task": "binary",
+    "features": "original",
+    "family": "linear",
+    "complexity": 0,
+    "lambda": 0.1,
+    "batch": "b1"
+  },
+  "binary_original_linear_1": {
+    "id": "binary_original_linear_1",
+    "task": "binary",
+    "features": "original",
+    "family": "linear",
+    "complexity": 0,
+    "lambda": 1.0,
+    "batch": "b1"
+  },
+  "binary_signed_linear_0.001": {
+    "id": "binary_signed_linear_0.001",
+    "task": "binary",
+    "features": "signed",
+    "family": "linear",
+    "complexity": 1,
+    "lambda": 0.001,
+    "batch": "b1"
+  },
+  "binary_signed_linear_0.01": {
+    "id": "binary_signed_linear_0.01",
+    "task": "binary",
+    "features": "signed",
+    "family": "linear",
+    "complexity": 1,
+    "lambda": 0.01,
+    "batch": "b1"
+  },
+  "binary_signed_linear_0.1": {
+    "id": "binary_signed_linear_0.1",
+    "task": "binary",
+    "features": "signed",
+    "family": "linear",
+    "complexity": 1,
+    "lambda": 0.1,
+    "batch": "b1"
+  },
+  "binary_signed_linear_1": {
+    "id": "binary_signed_linear_1",
+    "task": "binary",
+    "features": "signed",
+    "family": "linear",
+    "complexity": 1,
+    "lambda": 1.0,
+    "batch": "b1"
+  },
+  "binary_dynamics_linear_0.001": {
+    "id": "binary_dynamics_linear_0.001",
+    "task": "binary",
+    "features": "dynamics",
+    "family": "linear",
+    "complexity": 2,
+    "lambda": 0.001,
+    "batch": "b1"
+  },
+  "binary_dynamics_linear_0.01": {
+    "id": "binary_dynamics_linear_0.01",
+    "task": "binary",
+    "features": "dynamics",
+    "family": "linear",
+    "complexity": 2,
+    "lambda": 0.01,
+    "batch": "b1"
+  },
+  "binary_dynamics_linear_0.1": {
+    "id": "binary_dynamics_linear_0.1",
+    "task": "binary",
+    "features": "dynamics",
+    "family": "linear",
+    "complexity": 2,
+    "lambda": 0.1,
+    "batch": "b1"
+  },
+  "binary_dynamics_linear_1": {
+    "id": "binary_dynamics_linear_1",
+    "task": "binary",
+    "features": "dynamics",
+    "family": "linear",
+    "complexity": 2,
+    "lambda": 1.0,
+    "batch": "b1"
+  },
+  "binary_dynamics_hgb_d2_l21": {
+    "id": "binary_dynamics_hgb_d2_l21",
+    "task": "binary",
+    "features": "dynamics",
+    "family": "hgb",
+    "complexity": 12,
+    "depth": 2,
+    "l2": 1.0,
+    "batch": "b1"
+  },
+  "binary_dynamics_hgb_d2_l210": {
+    "id": "binary_dynamics_hgb_d2_l210",
+    "task": "binary",
+    "features": "dynamics",
+    "family": "hgb",
+    "complexity": 12,
+    "depth": 2,
+    "l2": 10.0,
+    "batch": "b1"
+  },
+  "binary_dynamics_hgb_d3_l21": {
+    "id": "binary_dynamics_hgb_d3_l21",
+    "task": "binary",
+    "features": "dynamics",
+    "family": "hgb",
+    "complexity": 13,
+    "depth": 3,
+    "l2": 1.0,
+    "batch": "b1"
+  },
+  "binary_dynamics_hgb_d3_l210": {
+    "id": "binary_dynamics_hgb_d3_l210",
+    "task": "binary",
+    "features": "dynamics",
+    "family": "hgb",
+    "complexity": 13,
+    "depth": 3,
+    "l2": 10.0,
+    "batch": "b1"
+  },
+  "binary_missing_0.01": {
+    "id": "binary_missing_0.01",
+    "batch": "b2",
+    "kind": "missing",
+    "lambda": 0.01
+  },
+  "binary_missing_0.1": {
+    "id": "binary_missing_0.1",
+    "batch": "b2",
+    "kind": "missing",
+    "lambda": 0.1
+  },
+  "binary_missing_1": {
+    "id": "binary_missing_1",
+    "batch": "b2",
+    "kind": "missing",
+    "lambda": 1.0
+  },
+  "binary_svd_0.01": {
+    "id": "binary_svd_0.01",
+    "batch": "b2",
+    "kind": "svd",
+    "lambda": 0.01
+  },
+  "binary_svd_0.1": {
+    "id": "binary_svd_0.1",
+    "batch": "b2",
+    "kind": "svd",
+    "lambda": 0.1
+  },
+  "binary_svd_1": {
+    "id": "binary_svd_1",
+    "batch": "b2",
+    "kind": "svd",
+    "lambda": 1.0
+  },
+  "binary_lda_0.01": {
+    "id": "binary_lda_0.01",
+    "batch": "b2",
+    "kind": "lda",
+    "lambda": 0.01
+  },
+  "binary_lda_0.1": {
+    "id": "binary_lda_0.1",
+    "batch": "b2",
+    "kind": "lda",
+    "lambda": 0.1
+  },
+  "binary_lda_1": {
+    "id": "binary_lda_1",
+    "batch": "b2",
+    "kind": "lda",
+    "lambda": 1.0
+  },
+  "binary_category_0.01": {
+    "id": "binary_category_0.01",
+    "batch": "b2",
+    "kind": "category",
+    "lambda": 0.01
+  },
+  "binary_category_0.1": {
+    "id": "binary_category_0.1",
+    "batch": "b2",
+    "kind": "category",
+    "lambda": 0.1
+  },
+  "binary_category_1": {
+    "id": "binary_category_1",
+    "batch": "b2",
+    "kind": "category",
+    "lambda": 1.0
+  },
+  "binary_embedding_0.01": {
+    "id": "binary_embedding_0.01",
+    "batch": "b2",
+    "kind": "embedding",
+    "lambda": 0.01
+  },
+  "binary_embedding_0.1": {
+    "id": "binary_embedding_0.1",
+    "batch": "b2",
+    "kind": "embedding",
+    "lambda": 0.1
+  },
+  "binary_embedding_1": {
+    "id": "binary_embedding_1",
+    "batch": "b2",
+    "kind": "embedding",
+    "lambda": 1.0
+  },
+  "logistic_expanded_0.01_a0": {
+    "id": "logistic_expanded_0.01_a0",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "expanded",
+    "alpha": 0,
+    "lambda": 0.01
+  },
+  "logistic_expanded_0.01_a0.1": {
+    "id": "logistic_expanded_0.01_a0.1",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "expanded",
+    "alpha": 0.1,
+    "lambda": 0.01
+  },
+  "logistic_expanded_0.01_a0.25": {
+    "id": "logistic_expanded_0.01_a0.25",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "expanded",
+    "alpha": 0.25,
+    "lambda": 0.01
+  },
+  "logistic_expanded_0.01_a0.5": {
+    "id": "logistic_expanded_0.01_a0.5",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "expanded",
+    "alpha": 0.5,
+    "lambda": 0.01
+  },
+  "logistic_expanded_0.01_a1": {
+    "id": "logistic_expanded_0.01_a1",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "expanded",
+    "alpha": 1,
+    "lambda": 0.01
+  },
+  "logistic_expanded_0.1_a0": {
+    "id": "logistic_expanded_0.1_a0",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "expanded",
+    "alpha": 0,
+    "lambda": 0.1
+  },
+  "logistic_expanded_0.1_a0.1": {
+    "id": "logistic_expanded_0.1_a0.1",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "expanded",
+    "alpha": 0.1,
+    "lambda": 0.1
+  },
+  "logistic_expanded_0.1_a0.25": {
+    "id": "logistic_expanded_0.1_a0.25",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "expanded",
+    "alpha": 0.25,
+    "lambda": 0.1
+  },
+  "logistic_expanded_0.1_a0.5": {
+    "id": "logistic_expanded_0.1_a0.5",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "expanded",
+    "alpha": 0.5,
+    "lambda": 0.1
+  },
+  "logistic_expanded_0.1_a1": {
+    "id": "logistic_expanded_0.1_a1",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "expanded",
+    "alpha": 1,
+    "lambda": 0.1
+  },
+  "logistic_expanded_1_a0": {
+    "id": "logistic_expanded_1_a0",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "expanded",
+    "alpha": 0,
+    "lambda": 1.0
+  },
+  "logistic_expanded_1_a0.1": {
+    "id": "logistic_expanded_1_a0.1",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "expanded",
+    "alpha": 0.1,
+    "lambda": 1.0
+  },
+  "logistic_expanded_1_a0.25": {
+    "id": "logistic_expanded_1_a0.25",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "expanded",
+    "alpha": 0.25,
+    "lambda": 1.0
+  },
+  "logistic_expanded_1_a0.5": {
+    "id": "logistic_expanded_1_a0.5",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "expanded",
+    "alpha": 0.5,
+    "lambda": 1.0
+  },
+  "logistic_expanded_1_a1": {
+    "id": "logistic_expanded_1_a1",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "expanded",
+    "alpha": 1,
+    "lambda": 1.0
+  },
+  "logistic_candidate_0.01_a0": {
+    "id": "logistic_candidate_0.01_a0",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "candidate",
+    "alpha": 0,
+    "lambda": 0.01
+  },
+  "logistic_candidate_0.01_a0.1": {
+    "id": "logistic_candidate_0.01_a0.1",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "candidate",
+    "alpha": 0.1,
+    "lambda": 0.01
+  },
+  "logistic_candidate_0.01_a0.25": {
+    "id": "logistic_candidate_0.01_a0.25",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "candidate",
+    "alpha": 0.25,
+    "lambda": 0.01
+  },
+  "logistic_candidate_0.01_a0.5": {
+    "id": "logistic_candidate_0.01_a0.5",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "candidate",
+    "alpha": 0.5,
+    "lambda": 0.01
+  },
+  "logistic_candidate_0.01_a1": {
+    "id": "logistic_candidate_0.01_a1",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "candidate",
+    "alpha": 1,
+    "lambda": 0.01
+  },
+  "logistic_candidate_0.1_a0": {
+    "id": "logistic_candidate_0.1_a0",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "candidate",
+    "alpha": 0,
+    "lambda": 0.1
+  },
+  "logistic_candidate_0.1_a0.1": {
+    "id": "logistic_candidate_0.1_a0.1",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "candidate",
+    "alpha": 0.1,
+    "lambda": 0.1
+  },
+  "logistic_candidate_0.1_a0.25": {
+    "id": "logistic_candidate_0.1_a0.25",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "candidate",
+    "alpha": 0.25,
+    "lambda": 0.1
+  },
+  "logistic_candidate_0.1_a0.5": {
+    "id": "logistic_candidate_0.1_a0.5",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "candidate",
+    "alpha": 0.5,
+    "lambda": 0.1
+  },
+  "logistic_candidate_0.1_a1": {
+    "id": "logistic_candidate_0.1_a1",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "candidate",
+    "alpha": 1,
+    "lambda": 0.1
+  },
+  "logistic_candidate_1_a0": {
+    "id": "logistic_candidate_1_a0",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "candidate",
+    "alpha": 0,
+    "lambda": 1.0
+  },
+  "logistic_candidate_1_a0.1": {
+    "id": "logistic_candidate_1_a0.1",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "candidate",
+    "alpha": 0.1,
+    "lambda": 1.0
+  },
+  "logistic_candidate_1_a0.25": {
+    "id": "logistic_candidate_1_a0.25",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "candidate",
+    "alpha": 0.25,
+    "lambda": 1.0
+  },
+  "logistic_candidate_1_a0.5": {
+    "id": "logistic_candidate_1_a0.5",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "candidate",
+    "alpha": 0.5,
+    "lambda": 1.0
+  },
+  "logistic_candidate_1_a1": {
+    "id": "logistic_candidate_1_a1",
+    "batch": "b4",
+    "family": "logistic",
+    "pool": "candidate",
+    "alpha": 1,
+    "lambda": 1.0
+  },
+  "pairwise_expanded_0.01_a0": {
+    "id": "pairwise_expanded_0.01_a0",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "expanded",
+    "alpha": 0,
+    "lambda": 0.01
+  },
+  "pairwise_expanded_0.01_a0.1": {
+    "id": "pairwise_expanded_0.01_a0.1",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "expanded",
+    "alpha": 0.1,
+    "lambda": 0.01
+  },
+  "pairwise_expanded_0.01_a0.25": {
+    "id": "pairwise_expanded_0.01_a0.25",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "expanded",
+    "alpha": 0.25,
+    "lambda": 0.01
+  },
+  "pairwise_expanded_0.01_a0.5": {
+    "id": "pairwise_expanded_0.01_a0.5",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "expanded",
+    "alpha": 0.5,
+    "lambda": 0.01
+  },
+  "pairwise_expanded_0.01_a1": {
+    "id": "pairwise_expanded_0.01_a1",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "expanded",
+    "alpha": 1,
+    "lambda": 0.01
+  },
+  "pairwise_expanded_0.1_a0": {
+    "id": "pairwise_expanded_0.1_a0",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "expanded",
+    "alpha": 0,
+    "lambda": 0.1
+  },
+  "pairwise_expanded_0.1_a0.1": {
+    "id": "pairwise_expanded_0.1_a0.1",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "expanded",
+    "alpha": 0.1,
+    "lambda": 0.1
+  },
+  "pairwise_expanded_0.1_a0.25": {
+    "id": "pairwise_expanded_0.1_a0.25",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "expanded",
+    "alpha": 0.25,
+    "lambda": 0.1
+  },
+  "pairwise_expanded_0.1_a0.5": {
+    "id": "pairwise_expanded_0.1_a0.5",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "expanded",
+    "alpha": 0.5,
+    "lambda": 0.1
+  },
+  "pairwise_expanded_0.1_a1": {
+    "id": "pairwise_expanded_0.1_a1",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "expanded",
+    "alpha": 1,
+    "lambda": 0.1
+  },
+  "pairwise_expanded_1_a0": {
+    "id": "pairwise_expanded_1_a0",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "expanded",
+    "alpha": 0,
+    "lambda": 1.0
+  },
+  "pairwise_expanded_1_a0.1": {
+    "id": "pairwise_expanded_1_a0.1",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "expanded",
+    "alpha": 0.1,
+    "lambda": 1.0
+  },
+  "pairwise_expanded_1_a0.25": {
+    "id": "pairwise_expanded_1_a0.25",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "expanded",
+    "alpha": 0.25,
+    "lambda": 1.0
+  },
+  "pairwise_expanded_1_a0.5": {
+    "id": "pairwise_expanded_1_a0.5",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "expanded",
+    "alpha": 0.5,
+    "lambda": 1.0
+  },
+  "pairwise_expanded_1_a1": {
+    "id": "pairwise_expanded_1_a1",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "expanded",
+    "alpha": 1,
+    "lambda": 1.0
+  },
+  "pairwise_candidate_0.01_a0": {
+    "id": "pairwise_candidate_0.01_a0",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "candidate",
+    "alpha": 0,
+    "lambda": 0.01
+  },
+  "pairwise_candidate_0.01_a0.1": {
+    "id": "pairwise_candidate_0.01_a0.1",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "candidate",
+    "alpha": 0.1,
+    "lambda": 0.01
+  },
+  "pairwise_candidate_0.01_a0.25": {
+    "id": "pairwise_candidate_0.01_a0.25",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "candidate",
+    "alpha": 0.25,
+    "lambda": 0.01
+  },
+  "pairwise_candidate_0.01_a0.5": {
+    "id": "pairwise_candidate_0.01_a0.5",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "candidate",
+    "alpha": 0.5,
+    "lambda": 0.01
+  },
+  "pairwise_candidate_0.01_a1": {
+    "id": "pairwise_candidate_0.01_a1",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "candidate",
+    "alpha": 1,
+    "lambda": 0.01
+  },
+  "pairwise_candidate_0.1_a0": {
+    "id": "pairwise_candidate_0.1_a0",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "candidate",
+    "alpha": 0,
+    "lambda": 0.1
+  },
+  "pairwise_candidate_0.1_a0.1": {
+    "id": "pairwise_candidate_0.1_a0.1",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "candidate",
+    "alpha": 0.1,
+    "lambda": 0.1
+  },
+  "pairwise_candidate_0.1_a0.25": {
+    "id": "pairwise_candidate_0.1_a0.25",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "candidate",
+    "alpha": 0.25,
+    "lambda": 0.1
+  },
+  "pairwise_candidate_0.1_a0.5": {
+    "id": "pairwise_candidate_0.1_a0.5",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "candidate",
+    "alpha": 0.5,
+    "lambda": 0.1
+  },
+  "pairwise_candidate_0.1_a1": {
+    "id": "pairwise_candidate_0.1_a1",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "candidate",
+    "alpha": 1,
+    "lambda": 0.1
+  },
+  "pairwise_candidate_1_a0": {
+    "id": "pairwise_candidate_1_a0",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "candidate",
+    "alpha": 0,
+    "lambda": 1.0
+  },
+  "pairwise_candidate_1_a0.1": {
+    "id": "pairwise_candidate_1_a0.1",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "candidate",
+    "alpha": 0.1,
+    "lambda": 1.0
+  },
+  "pairwise_candidate_1_a0.25": {
+    "id": "pairwise_candidate_1_a0.25",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "candidate",
+    "alpha": 0.25,
+    "lambda": 1.0
+  },
+  "pairwise_candidate_1_a0.5": {
+    "id": "pairwise_candidate_1_a0.5",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "candidate",
+    "alpha": 0.5,
+    "lambda": 1.0
+  },
+  "pairwise_candidate_1_a1": {
+    "id": "pairwise_candidate_1_a1",
+    "batch": "b4",
+    "family": "pairwise",
+    "pool": "candidate",
+    "alpha": 1,
+    "lambda": 1.0
+  },
+  "binary": {
+    "id": "binary",
+    "batch": "b5",
+    "objective": "binary",
+    "initialized": false,
+    "truncation": 8
+  },
+  "rank50_base": {
+    "id": "rank50_base",
+    "batch": "b8",
+    "kind": "base"
+  },
+  "rank50_missing": {
+    "id": "rank50_missing",
+    "batch": "b8",
+    "kind": "missing"
+  },
+  "rank50_svd": {
+    "id": "rank50_svd",
+    "batch": "b8",
+    "kind": "svd"
+  },
+  "rank50_lda": {
+    "id": "rank50_lda",
+    "batch": "b8",
+    "kind": "lda"
+  },
+  "rank50_intro": {
+    "id": "rank50_intro",
+    "batch": "b8",
+    "kind": "intro"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "research/results/user_at50_history_v1/summary.csv": "2a959af8737dc884726129d1b85b24a4993305ff4eca3ff415db47b1b0f5991f",
+  "research/results/user_at50_history_v1/monthly.csv": "65c8117eaacd8167f4fd668f1b3341056c317ec65656089fc206790e479670ab",
+  "research/results/full_report_v5/front_table_values.json": "ac0efe25cd79f105827bf509d739228b6551aa728feb61e52edefdb210a1e694",
+  "wikiflow/config/early_selection.json": "b478175b18d815ccb1620e2f12bfec38e9962d27d2dd8199415509ff99cc7f48",
+  "wikiflow/docs/design.md": "6d4a8a0b08a6a7ad57d5292bb50d8c2d069f8b10c9f12cdf94e9d327d8ee1b3e",
+  "research/at50_semantic_protocol.md": "3f944da1397b22457717e3b00a2e69b27edf0fce9047b06b14119fe1e83c149d",
+  "research/protocol.md": "fcb15f13d95e94507125f4633d4bd7cac7516d5c3430bb737e8693d98cfa931f",
+  "research/text_protocol.md": "3b6d8c9552df9352e45779e74e3a1dabbbe56b391e63fb6380e8700d19f92883",
+  "research/rule_residual_protocol.md": "19b7a5f110b07d66fa9c7255720ea07f80f8b1222bae364799820cb4d033a5d5",
+  "research/nonlinear_focus_protocol.md": "c1cb565bca40e17f86e54f56742942951134a8db30f7a21fd02b60e9b8ad79e9",
+  "research/at50_ranker_semantic_protocol.md": "b52284a5b15e790670f2bf1abf03e97170a11ae21e27d944cb5dd82f8fd3d7f5"
+}

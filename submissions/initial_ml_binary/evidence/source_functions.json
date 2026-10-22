@@ -1,0 +1,45 @@
+{
+  "src/experiment.py": {
+    "source": "research/experiment.py",
+    "source_sha256": "7606ffc5095913f761ef8c6bb0ee091b5aabc5dd576a03caca5b42f64ccc871a",
+    "functions": [
+      "momentum_score",
+      "feature_values",
+      "chronological_train",
+      "choose_config",
+      "fit_one",
+      "baseline_scores",
+      "metrics"
+    ]
+  },
+  "src/rule_residual.py": {
+    "source": "research/rule_residual.py",
+    "source_sha256": "fa44e5bb4b5e0afc5b105a24dc78774fbd859fd0efb4c16b92697ba162f336d8",
+    "functions": [
+      "objective",
+      "fit_weights",
+      "prepared",
+      "training_objective",
+      "train_at",
+      "select"
+    ]
+  },
+  "src/nonlinear_focus.py": {
+    "source": "research/nonlinear_focus.py",
+    "source_sha256": "3b4332ce15212f3a0096838d2fdafc4f2fb2f67d4e3e1af496af925e960b2905",
+    "functions": [
+      "query_groups",
+      "add_initializer",
+      "choose"
+    ]
+  },
+  "src/at50_ranker_semantics.py": {
+    "source": "research/at50_ranker_semantics.py",
+    "source_sha256": "093edd8b094eed0f099f928160c9f3526da6fe159c9fac9cfda441ee797321b5",
+    "functions": [
+      "select_recipe",
+      "fit_representation",
+      "augmented_prepared"
+    ]
+  }
+}
