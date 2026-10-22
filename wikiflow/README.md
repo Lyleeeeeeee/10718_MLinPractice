@@ -1,4 +1,15 @@
 # WikiFlow: reproducible course baselines
+## Initial ML Solution — binary ranking (22 October 2026)
+
+The expanded binary-ranking report and its supporting code are available in the incremental submission directory:
+
+- [Report PDF](../WikiFlow_Report.pdf)
+- [Code and reproduction instructions](binary/README.md)
+- [Report-to-code mapping](binary/REPORT_MAP.md)
+
+The submission reuses the existing WikiFlow baseline modules. The original baseline documentation is retained.
+
+
 
 Each month, rank articles that are currently cold and have had few substantial recent edits, for human review of possible increased internal navigation next month. The fixed WikiProject Artificial Intelligence maintenance portfolio contains 1,187 canonical articles, including people and works. Membership is a maintenance scope, not a pure AI technology collection; edit activity is a candidate proxy, not a content-quality label.
 
@@ -106,12 +117,3 @@ python -m wikiflow.reproduce --mode refit \
 
 Preparation verifies parent chains, full windows, explicit PV zeros versus missing days, canonical destination scope and holdout boundaries. The optional prepared panel must match the frozen keys, labels and eligibility exactly, with numerical tolerance for historical summation roundoff. Its `wikiflow.course.panel.v1` schema is a packaging name, not a newer identity version. Fresh downloads, complete raw-cache reconstruction for this subset, release-latency certification, portfolio-wide identity repair, bootstrap intervals and independent holdout performance are not claimed.
 
-## Initial ML Solution — binary ranking (22 October 2026)
-
-The expanded binary-ranking report and its supporting code are available in the incremental submission directory:
-
-- [Report PDF](../submissions/initial_ml_binary/report/main.pdf)
-- [Code and reproduction instructions](../submissions/initial_ml_binary/README.md)
-- [Report-to-code mapping](../submissions/initial_ml_binary/REPORT_MAP.md)
-
-The submission reuses the existing WikiFlow baseline modules. The original baseline documentation is retained.

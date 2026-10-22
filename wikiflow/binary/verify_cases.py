@@ -18,7 +18,7 @@ def bound(rates, count_days):
 
 def main():
     evidence = json.loads((ROOT / 'evidence/case_evidence.json').read_text())
-    with gzip.open(ROOT.parents[1] / 'wikiflow/data/panel.json.gz', 'rt') as handle:
+    with gzip.open(ROOT.parent / 'data/panel.json.gz', 'rt') as handle:
         panel = json.load(handle)
     rows = {r['key']: r for r in panel['rows']}
     for case in evidence['cases']:

@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-sys.path.insert(0, str(ROOT.parents[1] / 'wikiflow/src'))
+sys.path.insert(0, str(ROOT.parent / 'src'))
 sys.path.insert(0, str(ROOT / 'src'))
 from wikiflow.core import FORECASTS, aggregate, rank_metric
 from wikiflow.reproduce import load, validate_panel, write_csv
@@ -18,7 +18,7 @@ def main():
     args = parser.parse_args()
     if args.output.exists():
         parser.error('Output already exists; choose a fresh directory.')
-    panel = load(ROOT.parents[1] / 'wikiflow/data/panel.json.gz')
+    panel = load(ROOT.parent / 'data/panel.json.gz')
     rowmap = validate_panel(panel)
     candidates = [rowmap[key] for key in panel['evaluation_keys']]
     predictions = load(ROOT / 'data/development_predictions.json.gz')

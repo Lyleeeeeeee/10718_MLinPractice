@@ -6,3 +6,5 @@ report/qa/
 report/*.log
 report/*.aux
 report/*.xdv
+
+report/main.pdf

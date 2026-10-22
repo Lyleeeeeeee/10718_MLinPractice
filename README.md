@@ -10,8 +10,9 @@ Start with the [README and reproduction commands](wikiflow/README.md), [design](
 
 The expanded binary-ranking report and its supporting code are available in the incremental submission directory:
 
-- [Report PDF](submissions/initial_ml_binary/report/main.pdf)
-- [Code and reproduction instructions](submissions/initial_ml_binary/README.md)
-- [Report-to-code mapping](submissions/initial_ml_binary/REPORT_MAP.md)
+- [Report PDF](WikiFlow_Report.pdf)
+- [Code and reproduction instructions](wikiflow/binary/README.md)
+- [Report-to-code mapping](wikiflow/binary/REPORT_MAP.md)
 
 The submission reuses the existing WikiFlow baseline modules. The original baseline documentation is retained.
+

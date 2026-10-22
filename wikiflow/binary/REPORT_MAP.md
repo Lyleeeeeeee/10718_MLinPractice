@@ -1,12 +1,12 @@
 # Report-to-code map
 
-All paths are relative to this directory. Every displayed row uses the unchanged baseline `../../wikiflow/src/wikiflow/core.py:rank_metric` and the identical candidate support. All optional fold fitting is wired by `fit_fold.py`; the default `reproduce.py` only re-evaluates saved rankings.
+All paths are relative to this directory. Every displayed row uses the unchanged baseline `../src/wikiflow/core.py:rank_metric` and the identical candidate support. All optional fold fitting is wired by `fit_fold.py`; the default `reproduce.py` only re-evaluates saved rankings.
 
 | Report row / recipe ID | Implementation | Configuration | Evidence |
 |---|---|---|---|
 | `volume` | `src/experiment.py:baseline_scores / momentum_score` | `config/recipes.json` key `volume` | `data/development_predictions.json.gz`; `evidence/expected_monthly.csv` |
 | `cs_momentum` | `src/experiment.py:baseline_scores / momentum_score` | `config/recipes.json` key `cs_momentum` | `data/development_predictions.json.gz`; `evidence/expected_monthly.csv` |
-| `binary_log13` | `../../wikiflow/src/wikiflow/learners.py:fit_logistic` | `config/recipes.json` key `binary_log13` | `data/development_predictions.json.gz`; `evidence/expected_monthly.csv` |
+| `binary_log13` | `../src/wikiflow/learners.py:fit_logistic` | `config/recipes.json` key `binary_log13` | `data/development_predictions.json.gz`; `evidence/expected_monthly.csv` |
 | `binary_missing_0.01` | `src/text_features.py:representation + baseline fit_logistic` | `config/recipes.json` key `binary_missing_0.01` | `data/development_predictions.json.gz`; `evidence/expected_monthly.csv` |
 | `binary_dynamics_hgb_d2_l21` | `src/experiment.py:fit_one / feature_values` | `config/recipes.json` key `binary_dynamics_hgb_d2_l21` | `data/development_predictions.json.gz`; `evidence/expected_monthly.csv` |
 | `binary` | `src/nonlinear_focus.py + fit_fold.py` | `config/recipes.json` key `binary` | `data/development_predictions.json.gz`; `evidence/expected_monthly.csv` |
@@ -32,8 +32,8 @@ All paths are relative to this directory. Every displayed row uses the unchanged
 - Figure 2: same script, month-paired rank50_base minus cs_momentum NDCG@50. April 2025 has predictions and 50 review slots. Figure 2 displays its difference as zero only for plotting; saved metrics and the event-month aggregate are unchanged.
 - Tables 3/4: values in `report/main.tex`, independently checked against `evidence/expected_summary.csv` and recomputed from saved rankings by reproduce.py.
 - Clean sensitivity paragraph: `report/evidence/clean_selected.json`; it is not merged into original-main. The optional fit_fold.py exclusion removes pageid 525160 from both sides. No new clean refit was run.
-- Label, candidate filter, missingness and metrics: existing `../../wikiflow/src/wikiflow/core.py`.
-- Baseline panel: existing `../../wikiflow/data/panel.json.gz`, byte-identical to the research input.
+- Label, candidate filter, missingness and metrics: existing `../src/wikiflow/core.py`.
+- Baseline panel: existing `../data/panel.json.gz`, byte-identical to the research input.
 - Historical Log13 provenance correction: `evidence/provenance_correction.md`.
 
 The report uses descriptive model/input names rather than internal batch IDs. Batch IDs below identify reproduction sources only; selection metrics remain those actually used, including P@5. The report introduction omits historical workflow narration.

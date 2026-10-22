@@ -4,7 +4,7 @@ This directory is an additive report entry point in the existing repository for 
 
 ## Quick reproduction (zero model fits)
 
-Use Python 3.13.5 and an isolated environment:
+From the repository root, enter `wikiflow/binary`. Use Python 3.13.5 and an isolated environment:
 
 ```sh
 python3 -m venv .venv
@@ -16,15 +16,16 @@ python -m unittest discover -s tests -v
 python report/build_assets.py
 cd report
 tectonic main.tex
+mv main.pdf ../../../WikiFlow_Report.pdf
 ```
 
 The default replay reads only bundled development data and saved predictions. It checks all 12 displayed configurations across 24 months against the saved results. Expected support is 5,387 known candidate article-months, 190 events, and 1,200 top-50 slots. Numeric Rank50 has NDCG@50 0.29651889338132986, P@50 0.07333333333333333, pooled Recall@50 0.4631578947368421 and 88 hits. The selection replay verifies four relevant historical search decisions without rerunning optimizers or choosing a new winner.
 
-Outputs go to a fresh `generated/replay` directory; reruns require a fresh `--output`. All paths are relative to the scripts and the existing repository; keep this directory at submissions/initial_ml_binary. Figure generation uses the CSVs inside `report/evidence`, without requiring the original research workspace. Tectonic may need standard TeX packages on its first run.
+Outputs go to a fresh `generated/replay` directory; reruns require a fresh `--output`. All paths are relative to the scripts and the existing repository; keep this directory at wikiflow/binary. Figure generation uses the CSVs inside `report/evidence`, without requiring the original research workspace. Tectonic may need standard TeX packages on its first run.
 
 ## Layout
 
-- `../../wikiflow/`: existing core, original learner, preprocessing, evaluator and frozen development panel, reused without changes.
+- `../`: existing core, original learner, preprocessing, evaluator and frozen development panel, reused without changes.
 - `src/`: additional numerical kernels for tabular Logistic/HGB, month-balanced pairwise loss, exact rational rule blending, LightGBM grouping/initialization, and TRAIN-only text transforms. The original function ASTs are preserved; long historical drivers, downloads and unrelated trials are omitted.
 - `config/recipes.json`: 100 binary recipe entries for the displayed families: 2 rules, 1 original fixed Log13, 16 numeric Logistic/HGB, 15 Logistic text controls, 60 pairwise/blend combinations, 1 fixed LightGBM classifier and 5 LambdaRank feature inputs. Recipe counts are not fit counts; B4 weights share fitted learners and some later models were historically reused.
 - `data/`: saved scores for displayed methods, and compact frozen text/embedding inputs needed by the reported variants.
@@ -46,9 +47,9 @@ The original Log13 uses fixed inherited lambda .01. The old two-lambda `early_se
 
 ## Inputs, dependencies and limits
 
-The baseline panel is reused in place; compact text-derived inputs and report predictions are added here. They contain public article statistics/text, not editor identities or private communication. `../../wikiflow/data/public_download_provenance.json` and `../../wikiflow/data/title_mapping.csv` document the upstream sources/catalogue. Source data are Wikimedia Clickstream, pageviews and MediaWiki revision content. The frozen historical text cutoff is 2023-09-30. MiniLM is `sentence-transformers/all-MiniLM-L6-v2` at revision `7dbbc90392e2f80f3d3c277d6e90027e55de9125`; the bundled embeddings avoid weight downloads or inference during reproduction. Dimensions are fixed at 8; seed is 718 and numerical fitting uses two threads.
+The baseline panel is reused in place; compact text-derived inputs and report predictions are added here. They contain public article statistics/text, not editor identities or private communication. `../data/public_download_provenance.json` and `../data/title_mapping.csv` document the upstream sources/catalogue. Source data are Wikimedia Clickstream, pageviews and MediaWiki revision content. The frozen historical text cutoff is 2023-09-30. MiniLM is `sentence-transformers/all-MiniLM-L6-v2` at revision `7dbbc90392e2f80f3d3c277d6e90027e55de9125`; the bundled embeddings avoid weight downloads or inference during reproduction. Dimensions are fixed at 8; seed is 718 and numerical fitting uses two threads.
 
-Raw dump/API caches and encoder weights are not included. Fresh source acquisition is not byte-equivalent to the fixed historical snapshot and is not an automatic reproduction step. The original baseline acquisition code remains in `../../wikiflow` in this repository. No holdout data, preparation or evaluation entry point is included. The data are retrospective development evidence, with catalogue/title/source-release limitations stated in the report. Exact floating-point behavior can depend on platform/BLAS even with pinned versions.
+Raw dump/API caches and encoder weights are not included. Fresh source acquisition is not byte-equivalent to the fixed historical snapshot and is not an automatic reproduction step. The original baseline acquisition code remains in `..` in this repository. No holdout data, preparation or evaluation entry point is included. The data are retrospective development evidence, with catalogue/title/source-release limitations stated in the report. Exact floating-point behavior can depend on platform/BLAS even with pinned versions.
 
 ## Data examples
 
@@ -56,4 +57,4 @@ Raw dump/API caches and encoder weights are not included. Fresh source acquisiti
 
 ## Numeric input mapping
 
-`src/rule_residual.py:prepared` and `src/at50_ranker_semantics.py:augmented_prepared` use exactly five numeric columns: (1) `joint_margin(row) = log1p(x_M) - log1p(T_M)`; (2) baseline features[0] minus features[1], the difference of log daily incoming rates; (3) features[8], the difference of log mean daily pageviews in successive 14-day windows; (4) features[0], log current daily incoming; (5) features[10] minus features[3], log robust daily-rate scale minus log six-month median. They represent threshold distance, two growth signals, traffic scale and variability. The baseline field list and calculations remain in `../../wikiflow/src/wikiflow/preparation.py:FEATURES` and `article_features`; Log13 appends the joint margin to the original twelve fields. Text missingness is `docs[pageid]['missing']` (1 = unavailable), independent of outcome-label missingness.
+`src/rule_residual.py:prepared` and `src/at50_ranker_semantics.py:augmented_prepared` use exactly five numeric columns: (1) `joint_margin(row) = log1p(x_M) - log1p(T_M)`; (2) baseline features[0] minus features[1], the difference of log daily incoming rates; (3) features[8], the difference of log mean daily pageviews in successive 14-day windows; (4) features[0], log current daily incoming; (5) features[10] minus features[3], log robust daily-rate scale minus log six-month median. They represent threshold distance, two growth signals, traffic scale and variability. The baseline field list and calculations remain in `../src/wikiflow/preparation.py:FEATURES` and `article_features`; Log13 appends the joint margin to the original twelve fields. Text missingness is `docs[pageid]['missing']` (1 = unavailable), independent of outcome-label missingness.

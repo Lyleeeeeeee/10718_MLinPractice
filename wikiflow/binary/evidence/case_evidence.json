@@ -112,6 +112,6 @@
   "source_sha256": {
     "modern_models_evidence.json": "006dad1ec41398cb5e484088ea00b9c6ee7cb64cf187ccfd40451d0b9c521e81",
     "modern_models_analysis.py": "aa68f3a3fbe41627bd673bdaad1e8e99d60e473cd7e2cfc50c03e4d482fad965",
-    "../../wikiflow/data/panel.json.gz": "8727d27c1b70096971bcfd8bf8f0d9f6270dc9a0e8d9cdcb613cdfa0282e1fcf"
+    "../data/panel.json.gz": "8727d27c1b70096971bcfd8bf8f0d9f6270dc9a0e8d9cdcb613cdfa0282e1fcf"
   }
 }

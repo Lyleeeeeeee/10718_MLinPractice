@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-sys.path.insert(0, str(ROOT.parents[1] / 'wikiflow/src'))
+sys.path.insert(0, str(ROOT.parent / 'src'))
 sys.path.insert(0, str(ROOT / 'src'))
 
 
@@ -26,7 +26,7 @@ def fit_recipe(recipe, month, exclude_pageid=None):
 
     if month not in EARLY8 + FORECASTS:
         raise ValueError('Only documented development months are allowed')
-    panel = load(ROOT.parents[1] / 'wikiflow/data/panel.json.gz')
+    panel = load(ROOT.parent / 'data/panel.json.gz')
     validate_panel(panel)
     rows = [r for r in panel['rows'] if r['pageid'] != exclude_pageid]
     labels = panel['labels']
