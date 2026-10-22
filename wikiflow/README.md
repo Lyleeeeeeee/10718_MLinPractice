@@ -1,23 +1,42 @@
-# WikiFlow: reproducible course baselines
-## Initial ML Solution — binary ranking (22 October 2026)
+# WikiFlow: Initial ML Solution
 
-The expanded binary-ranking report and its supporting code are available in the incremental submission directory:
+WikiFlow ranks eligible articles in the WikiProject Artificial Intelligence portfolio for a monthly human-review budget of 50 articles. This is one project: the shared data, preprocessing, original learners and evaluator remain in `src/wikiflow`; `binary/` contains the additional binary-ranking methods and report evidence.
 
-- [Report PDF](../WikiFlow_Report.pdf)
-- [Code and reproduction instructions](binary/README.md)
-- [Report-to-code mapping](binary/REPORT_MAP.md)
+- [Current report PDF](../WikiFlow_Report.pdf)
+- [Binary study: reproduction instructions and dependencies](binary/README.md)
+- [Report-to-code and result mapping](binary/REPORT_MAP.md)
 
-The submission reuses the existing WikiFlow baseline modules. The original baseline documentation is retained.
+## Current binary study
 
+The report compares Volume and Momentum rules, Logistic regression (the original Log13 reference and an updated input configuration), histogram gradient boosting, LightGBM classification, a linear pairwise/rule blend, and binary LambdaRank. Text representations are input ablations of the same fixed LambdaRank learner, not additional model families.
 
+The primary model metric is **binary NDCG@50**, with P@50, pooled Recall@50 and full-list AP as supporting metrics. Results use the same original-main development support: 24 months, 5,387 known article-months and 190 surge events. NDCG averages the 23 event months. Clean-data sensitivity is reported separately. These are development backtests, not independent test results.
+
+## Reproduce the current report without training
+
+After installing the dependencies in [binary/README.md](binary/README.md), run from the repository root:
+
+```bash
+cd wikiflow/binary
+python reproduce.py
+python replay_selection.py
+python verify_cases.py
+python -m unittest discover -s tests -v
+```
+
+The default replay checks saved predictions for **12 displayed configurations across 24 months (288 method-months), with zero model fits**. Selection replay checks four recorded selection decisions; it does not run a new search. The current checks do not establish full refit equivalence for every new model. Report regeneration and optional development-only fold fitting are documented in the binary study README.
+
+## Legacy baseline reproduction and details
+
+The following retained documentation describes the earlier Volume/Log13/Ridge12 baseline package. Its commands, data-source records and historical results remain available. In particular, the recorded **48-fit verification applies only to Log13 and Ridge12**, not to all models in the current binary report. Continuous Ridge12 is historical context and is not part of the current binary model comparison.
 
 Each month, rank articles that are currently cold and have had few substantial recent edits, for human review of possible increased internal navigation next month. The fixed WikiProject Artificial Intelligence maintenance portfolio contains 1,187 canonical articles, including people and works. Membership is a maintenance scope, not a pure AI technology collection; edit activity is a candidate proxy, not a content-quality label.
 
 This is a course baseline subset of the [complete benchmark](https://github.com/Lyleeeeeeee/10718_MLinPractice/tree/ccf65a63287330870b43b7cb563d4cd20348d3a8); other studied rules and nonlinear comparators remain in that commit and the repository history.
 
-The current methods are **volume** (non-ML current incoming clickstream count descending), **binary Log13** and **relative continuous Ridge12**. Volume is evaluated identically for both tasks. The [design](docs/design.md) explains the data, features, training and evaluation contracts; the [audit](docs/audit.md) records verification and limitations. No method is claimed to be globally optimal or consistently superior to previously studied strong rules.
+The legacy baseline methods are **volume** (non-ML current incoming clickstream count descending), **binary Log13** and **relative continuous Ridge12**. Volume is evaluated identically for both tasks. The [design](docs/design.md) explains the data, features, training and evaluation contracts; the [audit](docs/audit.md) records verification and limitations. No method is claimed to be globally optimal or consistently superior to previously studied strong rules.
 
-## Offline reproduction
+### Offline reproduction
 
 Run from the repository root. Verified environment: Python 3.13.5, NumPy 2.3.3, SciPy 1.16.2, scikit-learn 1.7.2 and threadpoolctl 3.6.0. Matching these versions is recommended for exact numerical reproduction.
 
@@ -39,7 +58,7 @@ python -m wikiflow.reproduce --mode replay --output wikiflow/runs/my-replay
 
 `replay` recalculates metrics from stored predictions and performs **0 fits**. Both modes produce sealed predictions, monthly and aggregate CSVs, and `verification.json`; refit also produces `fit_trace.json`. The [48-fit trace](results/fit_trace.json) preserves the previous fixed refit; the current [verification](results/verification.json) records a zero-fit evaluation replay. [Fit accounting](results/fit_accounting.json) distinguishes the two. The [subset integrity report](results/subset_integrity.json) checks the projection from the previous commit. Parameters in `config/benchmark.json` and `config/early_selection.json` document fixed recipes, rather than exposing a new search or runtime tuning interface.
 
-## Retained results at K=50
+### Retained results at K=50
 
 The raw candidate pool contains **5,388 article-months**; evaluation uses **5,387** across 24 development months (2024-09 through 2026-08), with 23 event months, 190 events and 1,200 Top50 slots. Rows with missing ground-truth labels are excluded from evaluation. April 2025 has no events: TP/precision contribute zero while NDCG/AP/recall are NA.
 
@@ -52,7 +71,7 @@ The raw candidate pool contains **5,388 article-months**; evaluation uses **5,38
 
 The [summary](results/summary_at50.csv) and [monthly table](results/monthly_at50.csv) contain only these four task/method pairs. Relative NDCG uses `gR` directly. AP always uses binary events across the full ranking, even when scores come from a relative model. These repeatedly studied historical months are **development backtests**, not independent tests. The sealed 2026-09 holdout is absent and remains unopened. Subsetting does not undo earlier model/feature development or establish stable ML superiority.
 
-## Public data and identity v1
+### Public data and identity v1
 
 Inputs are [Wikimedia monthly Clickstream](https://dumps.wikimedia.org/other/clickstream/readme.html), [daily pageviews](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/reference/page-views.html), [MediaWiki revisions](https://www.mediawiki.org/wiki/API:Revisions) and current WikiProject talk-category membership. Monthly incoming CS sums published internal `link` edges to literal canonical destinations, from any internal source. It counts transitions, not unique users. Published edges have count>=10; suppressed or missing article/month observations are **unknown**, not zero. Redirects define the canonical catalogue but alias destination counts were not separately aggregated.
 
@@ -62,7 +81,7 @@ The [identity policy](config/identity_policy.json) retains **v1**: pageid 797454
 
 **Known Brainiac limitation, retained without correction:** pageid 525160 identifies the character, but before the August 2026 title swap the cached literal title `Brainiac` identifies disambiguation page 384942. CS/PV under that title were joined to character revision metadata. The mismatch affects 24 expanded rows, five evaluation rows and every rolling TRAIN fold; correct character exposure/labels remain unknown. July dump canonicalization vintage is also uncertified. This package preserves the original v1 rows and labels for reproducibility; it does not apply a newer identity correction, quarantine extra rows, flip labels or infer zero traffic. See the [audit](docs/audit.md) for the evidence boundary.
 
-## Labels, candidates and training
+### Labels, candidates and training
 
 Let target M have D_M days, current complete month c=M-1 have D_c days, I_c be published incoming CS, and v=I/D. For six monthly daily rates ending at c, m is their median and s=1.4826*median(abs(v-m)).
 
@@ -83,7 +102,7 @@ TRAIN expands over quality-complete, current-cold rows **without the edit-amount
 
 Score ties use current count descending then pageid ascending. DCG is sum(gain/log2(rank+1)), with gain=event for binary and gain=gR for relative; no second log or exponential gain. AP uses the complete ordered ranking. Macro metrics average valid months equally; micro precision/recall and pooled graded capture use summed totals.
 
-## Acquisition and preparation commands
+### Acquisition and preparation commands
 
 Quick reproduction is offline with `data/panel.json.gz` and checksum-checked references. Public-derived data contain article names/pageids/statistics, without editor identities, revision text, comments, credentials or machine paths. [Provenance](data/provenance.json) records the previous complete commit, source hashes and package hashes; [public download provenance](data/public_download_provenance.json) preserves dump URLs/checksums.
 
