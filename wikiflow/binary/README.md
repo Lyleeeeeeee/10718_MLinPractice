@@ -2,6 +2,12 @@
 
 This directory is an additive report entry point in the existing repository for the eight-page Team INFO report. It includes only the reported baseline/model families, their stated input ablations and bounded early search configurations. Original research history is preserved outside this directory.
 
+## Recall@50 reselection update
+
+The updated report uses pooled Recall@50 as its primary metric. [New experiment evidence](evidence/recall_reselection/README.md) records three configurations re-selected from the existing early folds, 72 development refits, and the shared-support comparison. SVD logistic leads at 93/190 surges (0.489), but its gain over Log13 is uncertain and below the deployment bar.
+
+Run `python wikiflow/binary/rerun_recall_selection.py --output /path/to/fresh/results` from the repository root to reproduce the refits. Historical selection records, the default replay, and the older report below are preserved; they describe the earlier experiment and are not the updated selection.
+
 ## Quick reproduction (zero model fits)
 
 From the repository root, enter `wikiflow/binary`. Use Python 3.13.5 and an isolated environment:
