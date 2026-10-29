@@ -1,0 +1,74 @@
+{
+  "commit": "f809d0dd4429dea3fc61be41fa7e4643d32d4d13",
+  "python": "3.12.14",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "versions": {
+    "numpy": "2.3.3",
+    "scipy": "1.16.2",
+    "scikit-learn": "1.7.2",
+    "lightgbm": "4.6.0",
+    "threadpoolctl": "3.6.0"
+  },
+  "recipes": {
+    "binary_signed_linear_0.001": {
+      "id": "binary_signed_linear_0.001",
+      "task": "binary",
+      "features": "signed",
+      "family": "linear",
+      "complexity": 1,
+      "lambda": 0.001,
+      "batch": "b1"
+    },
+    "binary_svd_0.01": {
+      "id": "binary_svd_0.01",
+      "batch": "b2",
+      "kind": "svd",
+      "lambda": 0.01
+    },
+    "pairwise_expanded_1_a0.5": {
+      "id": "pairwise_expanded_1_a0.5",
+      "batch": "b4",
+      "family": "pairwise",
+      "pool": "expanded",
+      "alpha": 0.5,
+      "lambda": 1.0
+    }
+  },
+  "months": [
+    "2024-09",
+    "2024-10",
+    "2024-11",
+    "2024-12",
+    "2025-01",
+    "2025-02",
+    "2025-03",
+    "2025-04",
+    "2025-05",
+    "2025-06",
+    "2025-07",
+    "2025-08",
+    "2025-09",
+    "2025-10",
+    "2025-11",
+    "2025-12",
+    "2026-01",
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05",
+    "2026-06",
+    "2026-07",
+    "2026-08"
+  ],
+  "holdout_accessed": false,
+  "selection": "Frozen before this rerun: pooled early Recall@50, then macro binary NDCG@50; no new search.",
+  "inputs_sha256": {
+    "wikiflow/data/panel.json.gz": "8727d27c1b70096971bcfd8bf8f0d9f6270dc9a0e8d9cdcb613cdfa0282e1fcf",
+    "wikiflow/binary/data/text/b2/documents.json.gz": "44020dbbf5040389e153379f2113265e2abaad5a3bac35760c2ddfb77b81e9e2",
+    "wikiflow/binary/config/recipes.json": "209e5c3af27e8abe3b4ac9603e0b8c44fb6ef491b5ba3564961e8a36cbbab0a2"
+  },
+  "development_fits": 72,
+  "early_verification_fits": 14,
+  "elapsed_development_seconds": 15.151707887649536,
+  "completed": true
+}

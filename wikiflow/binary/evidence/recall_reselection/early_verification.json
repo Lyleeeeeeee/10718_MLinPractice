@@ -1,0 +1,100 @@
+[
+  {
+    "method": "binary_signed_linear_0.001",
+    "month": "2024-02",
+    "TP": 2,
+    "binary_NDCG": 0.19865072387593874,
+    "match": true
+  },
+  {
+    "method": "binary_signed_linear_0.001",
+    "month": "2024-05",
+    "TP": 3,
+    "binary_NDCG": 0.2712747041092684,
+    "match": true
+  },
+  {
+    "method": "binary_signed_linear_0.001",
+    "month": "2024-08",
+    "TP": 2,
+    "binary_NDCG": 0.5640920940185894,
+    "match": true
+  },
+  {
+    "method": "binary_svd_0.01",
+    "month": "2024-02",
+    "TP": 0,
+    "binary_NDCG": 0.0,
+    "match": true
+  },
+  {
+    "method": "binary_svd_0.01",
+    "month": "2024-05",
+    "TP": 4,
+    "binary_NDCG": 0.5167421302624535,
+    "match": true
+  },
+  {
+    "method": "binary_svd_0.01",
+    "month": "2024-08",
+    "TP": 2,
+    "binary_NDCG": 0.2738080112003162,
+    "match": true
+  },
+  {
+    "method": "pairwise_expanded_1_a0.5",
+    "month": "2024-01",
+    "TP": 3,
+    "binary_NDCG": 0.2599681929820501,
+    "match": true
+  },
+  {
+    "method": "pairwise_expanded_1_a0.5",
+    "month": "2024-02",
+    "TP": 2,
+    "binary_NDCG": 0.5840880207487743,
+    "match": true
+  },
+  {
+    "method": "pairwise_expanded_1_a0.5",
+    "month": "2024-03",
+    "TP": 4,
+    "binary_NDCG": 0.27396305883041555,
+    "match": true
+  },
+  {
+    "method": "pairwise_expanded_1_a0.5",
+    "month": "2024-04",
+    "TP": 4,
+    "binary_NDCG": 0.5132431014393035,
+    "match": true
+  },
+  {
+    "method": "pairwise_expanded_1_a0.5",
+    "month": "2024-05",
+    "TP": 2,
+    "binary_NDCG": 0.15110316822221162,
+    "match": true
+  },
+  {
+    "method": "pairwise_expanded_1_a0.5",
+    "month": "2024-06",
+    "TP": 1,
+    "binary_NDCG": 0.26264953503719357,
+    "match": true
+  },
+  {
+    "method": "pairwise_expanded_1_a0.5",
+    "month": "2024-07",
+    "TP": 1,
+    "binary_NDCG": 0.1965616322328226,
+    "match": true
+  },
+  {
+    "method": "pairwise_expanded_1_a0.5",
+    "month": "2024-08",
+    "TP": 2,
+    "binary_NDCG": 0.7435918382736328,
+    "match": true
+  }
+]

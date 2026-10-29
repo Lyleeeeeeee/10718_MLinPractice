@@ -1,5 +1,7 @@
 # WikiFlow: Initial ML Solution
 
+> **Updated experiment:** [Recall@50 reselection and development refits](binary/evidence/recall_reselection/README.md) select SVD logistic (Recall@50 0.489). The results below retain the earlier NDCG-focused report for historical reference.
+
 WikiFlow ranks eligible articles in the WikiProject Artificial Intelligence portfolio for a monthly human-review budget of 50 articles. This is one project: the shared data, preprocessing, original learners and evaluator remain in `src/wikiflow`; `binary/` contains the additional binary-ranking methods and report evidence.
 
 - [Current report PDF](../WikiFlow_Report.pdf)
