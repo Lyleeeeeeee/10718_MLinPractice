@@ -40,4 +40,4 @@ Ignored caches outside this isolated clone were not deleted. Untracked/ignored f
 - fit_fold.py --recipe ... → python run.py fit --model ... --month ... --allow-fit --output ....
 - Retained historical model IDs resolve to the same recipes through models.json. Removed continuous/exploratory IDs are rejected instead of mapped to different models.
 
-Only the isolated cleanup branch changes. No reset, rewritten history, push or PR is involved.
+The reviewed cleanup tree was published to the original repository main branch on 2026-11-03 as commit 2d22541f5f525ec369732e82bd36d0a9018318d1, using a normal fast-forward update. The pre-cleanup commit remains an ancestor. No reset or history rewrite was used. Local backup paths above refer to the original cleanup workspace; they are not files hosted in this repository.
