@@ -1,0 +1,41 @@
+{
+  "source_commit": "3fc6e22eb189a9a9769147d0fcf894e859ca904e",
+  "metric": "pooled Recall@50, then mean event-month binary NDCG@50",
+  "adaptive_development": true,
+  "current_choices": [
+    {
+      "model_id": "traffic_text_logistic",
+      "search": "logistic_text",
+      "legacy_id": "binary_svd_0.01",
+      "early_events": 9,
+      "early_hits": 6
+    },
+    {
+      "model_id": "linear_pairwise_blend",
+      "search": "pairwise_blend",
+      "legacy_id": "pairwise_expanded_1_a0.5",
+      "early_events": 27,
+      "early_hits": 19
+    },
+    {
+      "model_id": "numeric_lambdarank",
+      "search": "lambdarank_inputs",
+      "legacy_id": "rank50_base",
+      "early_events": 27,
+      "early_hits": 16
+    }
+  ],
+  "fixed_choices": [
+    "volume",
+    "momentum",
+    "traffic_logistic",
+    "tree_classifier"
+  ],
+  "mandatory_control": "text_availability_control",
+  "notes": [
+    "Initial logistic and pairwise searches used P@5; Recall reselection happened after prior development inspection.",
+    "Numeric LambdaRank ties the flag control on early Recall and NDCG, and retains the simpler numeric input.",
+    "Traffic Logistic is the inherited Log13 reference, not the signed-slope numeric search winner.",
+    "Early trial scores preserve all original binary candidates at K=50; inactive recipes are not runnable models in this compact tree."
+  ]
+}

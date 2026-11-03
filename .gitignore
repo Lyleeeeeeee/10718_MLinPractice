@@ -5,6 +5,6 @@ __pycache__/
 .build/
 build/
 dist/
-wikiflow/runs/
-wikiflow/local_data/
+runs/
+local_data/
 .DS_Store

@@ -1,0 +1,71 @@
+{
+  "source_commit": "3fc6e22eb189a9a9769147d0fcf894e859ca904e",
+  "prediction_sources": {
+    "volume": {
+      "legacy_id": "volume",
+      "source_commit": "3fc6e22eb189a9a9769147d0fcf894e859ca904e",
+      "source_path": "wikiflow/binary/data/development_predictions.json.gz",
+      "source_sha256": "839e4dd73b4fc9967af8560575549afb9b9ce2b9549c5032065c00b840a56153"
+    },
+    "momentum": {
+      "legacy_id": "cs_momentum",
+      "source_commit": "3fc6e22eb189a9a9769147d0fcf894e859ca904e",
+      "source_path": "wikiflow/binary/data/development_predictions.json.gz",
+      "source_sha256": "839e4dd73b4fc9967af8560575549afb9b9ce2b9549c5032065c00b840a56153"
+    },
+    "traffic_logistic": {
+      "legacy_id": "binary_log13",
+      "source_commit": "3fc6e22eb189a9a9769147d0fcf894e859ca904e",
+      "source_path": "wikiflow/binary/data/development_predictions.json.gz",
+      "source_sha256": "839e4dd73b4fc9967af8560575549afb9b9ce2b9549c5032065c00b840a56153"
+    },
+    "traffic_text_logistic": {
+      "legacy_id": "binary_svd_0.01",
+      "source_commit": "3fc6e22eb189a9a9769147d0fcf894e859ca904e",
+      "source_path": "wikiflow/binary/evidence/recall_reselection/binary_svd_0.01_predictions.json",
+      "source_sha256": "d33c1a3f9b6aec16475c8089ec6f53cf5882f86cff374688fb8e33476a0889be"
+    },
+    "numeric_lambdarank": {
+      "legacy_id": "rank50_base",
+      "source_commit": "3fc6e22eb189a9a9769147d0fcf894e859ca904e",
+      "source_path": "wikiflow/binary/data/development_predictions.json.gz",
+      "source_sha256": "839e4dd73b4fc9967af8560575549afb9b9ce2b9549c5032065c00b840a56153"
+    },
+    "tree_classifier": {
+      "legacy_id": "binary",
+      "source_commit": "3fc6e22eb189a9a9769147d0fcf894e859ca904e",
+      "source_path": "wikiflow/binary/data/development_predictions.json.gz",
+      "source_sha256": "839e4dd73b4fc9967af8560575549afb9b9ce2b9549c5032065c00b840a56153"
+    },
+    "linear_pairwise_blend": {
+      "legacy_id": "pairwise_expanded_1_a0.5",
+      "source_commit": "3fc6e22eb189a9a9769147d0fcf894e859ca904e",
+      "source_path": "wikiflow/binary/evidence/recall_reselection/pairwise_expanded_1_a0.5_predictions.json",
+      "source_sha256": "df11def7db6bdf022ac80949d8aa651f6c2f9103a71cee8a661e648cb26e7195"
+    },
+    "text_availability_control": {
+      "legacy_id": "binary_missing_0.01",
+      "source_commit": "3fc6e22eb189a9a9769147d0fcf894e859ca904e",
+      "source_path": "wikiflow/binary/data/development_predictions.json.gz",
+      "source_sha256": "839e4dd73b4fc9967af8560575549afb9b9ce2b9549c5032065c00b840a56153"
+    }
+  },
+  "cleanup_only": true,
+  "model_fits": 0,
+  "holdout_read": false,
+  "primary_metric": "pooled Recall@50",
+  "source_report": "WikiFlow_Highlighted_v2.pdf, 2026-10-29; main GitHub PDF is older",
+  "old_package_manifest": {
+    "source_path": "wikiflow/binary/evidence/package_files_sha256.json",
+    "source_commit": "3fc6e22eb189a9a9769147d0fcf894e859ca904e"
+  },
+  "cleanup_note": "Subset/rename of frozen artifacts; panel, text, candidate/label rules and individual prediction values unchanged.",
+  "files_sha256": {
+    "results/predictions.json.gz": "6238202e4367bd9bdfd5a560ea3c0dbd1fb4e93f2e8ef63944554b044d5af82f",
+    "results/monthly.csv": "a55f23a7a7723de8afb66ba5494584b89c1dce11963d7e227ed1d7ffa1dc220c",
+    "results/summary.csv": "cbadd7578419cabef7fff9918e94c51637e0ac4c420c0fb33579fbef58066c03",
+    "results/early_trials.csv": "e43f88ec32715f02e02a0661521784876435a1f9996e1e015eddef2b6a954119",
+    "results/selection.json": "d5e8fddada5fdb99b65d6bf7eddd8718f2eb45e700787b51480aad60737b3115",
+    "models.json": "6528c3b0b3458b2d2de4e50d6c23514627b85a5f52dfe867966eac1fb321eea7"
+  }
+}

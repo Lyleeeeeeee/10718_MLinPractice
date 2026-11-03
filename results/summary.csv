@@ -1,0 +1,9 @@
+model_id,model,role,reference_type,hits,recall_at_50,ndcg_at_50,precision_at_50
+volume,Volume,main,saved_prediction,47,0.24736842105263157,0.12352844205963671,0.03916666666666667
+momentum,Momentum,main,saved_prediction,76,0.4,0.24124341396400925,0.06333333333333334
+traffic_logistic,Traffic Logistic,main,saved_prediction,81,0.4263157894736842,0.265096468808348,0.0675
+traffic_text_logistic,Traffic + Text Logistic,main,saved_prediction,93,0.48947368421052634,0.27384722229953246,0.0775
+numeric_lambdarank,Numeric LambdaRank,main,saved_prediction,88,0.4631578947368421,0.29651889338132986,0.07333333333333333
+tree_classifier,Boosted-tree Classifier (LightGBM),main,saved_prediction,78,0.4105263157894737,0.2777364828591106,0.065
+linear_pairwise_blend,Linear Pairwise Ranker + Rule Blend,main,saved_prediction,80,0.42105263157894735,0.29398136941333997,0.06666666666666667
+text_availability_control,Traffic Logistic + Text Availability,ablation,saved_prediction,88,0.4631578947368421,0.2740732559270755,0.07333333333333333
