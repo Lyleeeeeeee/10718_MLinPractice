@@ -1,0 +1,2 @@
+# Text parsing is included in the complete base pipeline.
+-r requirements.txt
