@@ -62,11 +62,20 @@ def features(rows, family, kind, records, ages, vectors):
     result = []
     for row in rows:
         values = numeric_features(row, family)
-        if kind != "numeric":
+        if kind in ("age", "svd", "minilm"):
             values += age_features(ages[str(row["pageid"])], row["target_month"] + "-01T00:00:00Z")
+        if kind in ("svd", "minilm"):
             values += [float(records[row["key"]]["missing"])] + vectors[row["key"]].tolist()
         result.append(dict(row, features=values))
     return result
+
+
+def fit_pairwise_rule(train, rows, labels, x, z):
+    """Fit the fixed pairwise learner and apply the unchanged traffic blend."""
+    pairs, targets, weights, intercept = training_objective(train, labels, x, "pairwise")
+    theta, solver = fit_weights(pairs, targets, weights, 1., intercept)
+    values = blend_rank_keys([explicit_margin(r) for r in rows], z @ theta, .5)
+    return values, dict(solver=solver, penalty=1., blend_weight=.5, training_pairs=len(pairs))
 
 
 def fit_fold(month, panel, rows, records, ages, embeddings):
@@ -97,10 +106,7 @@ def fit_fold(month, panel, rows, records, ages, embeddings):
                     values = sigmoid(theta[0] + z @ theta[1:])
                     details = dict(solver=solver, penalty=.01)
                 elif family == "pairwise_rule":
-                    pairs, targets, weights, intercept = training_objective(train, panel["labels"], x, "pairwise")
-                    theta, solver = fit_weights(pairs, targets, weights, 1., intercept)
-                    values = blend_rank_keys([explicit_margin(r) for r in rows], z @ theta, .5)
-                    details = dict(solver=solver, penalty=1., blend_weight=.5, training_pairs=len(pairs))
+                    values, details = fit_pairwise_rule(train, rows, panel["labels"], x, z)
                 else:
                     values, details = fit_matrix(family, train, rows, panel["labels"], x, z)
                 if not np.isfinite(values).all():

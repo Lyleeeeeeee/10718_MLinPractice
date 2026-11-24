@@ -22,6 +22,8 @@ The preceding daily rate must not exceed the target cold band; the preceding cou
 
 ## Rolling design and exposure
 
+See the [frozen benchmark protocol](protocol.json) for the machine-readable configuration.
+
 | Stage | Target months | Candidate opportunities | Known | Events | Top50 slots |
 |---|---|---:|---:|---:|---:|
 | Validation | September 2024–April 2026 | 4,282 | 4,281 | 327 | 1,000 |
@@ -44,7 +46,7 @@ All six test months were previously exposed. These temporal checks do not establ
 
 Each family has numeric, SVD8 + age and chunked MiniLM8 + age configurations. Logistic uses twelve traffic/pageview/missingness inputs plus an explicit threshold margin. The other families use threshold margin, clickstream growth, pageview growth, traffic level and relative spread. Momentum remains a standalone baseline; its score is not an extra learned-model feature.
 
-Semantic arms append eleven inputs: qualified visible-history log-age, its missingness indicator, a text-availability indicator and eight text dimensions. Age and text are added together, so their separate effects cannot be identified. SVD and MiniLM comparisons hold the age/availability additions and projected dimension fixed.
+Semantic arms append eleven inputs: qualified visible-history log-age, its missingness indicator, a text-availability indicator and eight text dimensions. In the main benchmark, age and text enter together. SVD and MiniLM comparisons hold the age/availability additions and projected dimension fixed. The separate [age vs. text ablation](../results/age_ablation/README.md) adds an age-only arm for the selected Pairwise + Traffic Rule recipe.
 
 Both tree families use 100 trees, seven leaves, depth three, learning rate 0.03, L2 10 and a nonnegative first-feature constraint. Pairwise has a nonnegative first coefficient. Training pools, numeric features, objectives and weights differ between recipes, so results are not a causal model-only comparison.
 

@@ -1,25 +1,39 @@
 # WikiFlow
 
-Monthly Wikipedia attention-growth ranking, from public data collection to model evaluation: **four learning recipes × three representations, plus three baselines**.
+WikiFlow ranks Wikipedia articles each month to help editors find pages likely to see a surge in readership. It produces a 50-article shortlist from historical internal-link traffic, pageviews, revision metadata, and article text.
 
-## Run
+## Run with the bundled data
 
 Use **Python 3.13.5**, from the repository root:
 
 ```sh
 python -m pip install -r requirements.txt
 python run.py show
-python run.py refit --output runs/refit
+python run.py verify
 ```
 
-Use a fresh output directory. The bundled data supports offline training without encoder downloads. To collect sources and regenerate features and embeddings, follow [the pipeline commands](docs/pipeline.md).
+| To reproduce | Command |
+|---|---|
+| Main benchmark: 12 configurations and three baselines | `python run.py refit --output runs/refit` |
+| Age vs. text: three feature sets, one fixed model | `python run.py ablate-age --output runs/age-ablation` |
+| Unit and regression tests | `python run.py test` |
 
-## Contents
+Always use a fresh output directory. The bundled data supports offline fits without downloading an encoder. To rebuild the inputs from source, use the [data and training pipeline](docs/pipeline.md).
 
-- [Methodology](docs/methodology.md): labels, features, rolling training and results.
-- [Pipeline](docs/pipeline.md): acquisition, preparation, encoding and training.
-- [Data](data/README.md) and [attribution](data/ATTRIBUTION.md).
-- `data_pipeline/`, `features/`, `textual/`, `models/`, `data_analysis/`: implementation.
-- `results/`: final predictions and summaries; `tests/`: automated tests.
+## Read the results
 
-The validation-selected Pairwise/SVD system finds **71/149 test events (47.65% Recall@50)**, versus momentum **56/149 (37.58%)**. All May–October 2026 outcomes were previously exposed; results are retrospective, not an independent holdout.
+- [Main benchmark](docs/methodology.md): the validation-selected Pairwise + Traffic Rule with SVD8 and age finds **71/149 events (47.65% Recall@50)** in May–October 2026, vs. **56/149 (37.58%)** for momentum. These are retrospective results, not an independent holdout.
+- [Age vs. text ablation](results/age_ablation/README.md): isolates what age adds to numeric features, then what text adds on top of age.
+- [Results index](results/README.md): summaries, per-month scores, predictions, and validation selection.
+
+## Find the code and data
+
+| Stage | Directory |
+|---|---|
+| Source acquisition, dataset preparation and assembly | [`data_pipeline/`](data_pipeline/) |
+| Bundled reproducible inputs and attribution | [`data/`](data/) |
+| Numeric inputs, thresholds and preprocessing | [`features/`](features/) |
+| Historical text, article age and representations | [`textual/`](textual/) |
+| Learners and ranking rules | [`models/`](models/) |
+| Rolling evaluation, ablation and verification | [`data_analysis/`](data_analysis/) |
+| Automated tests | [`tests/`](tests/) |

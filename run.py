@@ -17,7 +17,7 @@ def main():
         importlib.import_module(stages[sys.argv[1]]).main(sys.argv[2:])
         return
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("show", "verify", "verify-data", "refit", "test"))
+    parser.add_argument("command", choices=("show", "verify", "verify-data", "refit", "ablate-age", "test"))
     parser.add_argument("--output", type=Path)
     parser.add_argument("--data", type=Path, help="Prepared data directory; default bundled inputs")
     parser.add_argument("--compare-reference", action="store_true", help="Compare a source-data refit against bundled final scores")
@@ -40,6 +40,13 @@ def main():
             parser.error("refit requires --output runs/<new-directory>")
         from data_analysis.pipeline import refit
         print(json.dumps(refit(args.output, ROOT, args.data, True if args.compare_reference else None), indent=2))
+    elif args.command == "ablate-age":
+        if args.output is None:
+            parser.error("ablate-age requires --output runs/<new-directory>")
+        if args.data is not None or args.compare_reference:
+            parser.error("ablate-age uses the bundled data and always checks reference candidate support")
+        from data_analysis.age_ablation import run
+        print(json.dumps(run(args.output, ROOT), indent=2))
     else:
         subprocess.run([sys.executable, "-B", "-m", "unittest", "discover", "-s", "tests", "-v"], cwd=ROOT, check=True)
 

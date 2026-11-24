@@ -178,6 +178,15 @@ def verify(root=None):
     for name, values in (("validation_monthly", validation), ("test_monthly",test),
                          ("validation_summary",summarize(validation)),("test_summary",summarize(test))):
         compare_rows(values,root / "results" / (name+".csv"))
+    from .age_ablation import reference_matches, tables
+    ablation_dir = root / "results" / "age_ablation"
+    ablation = load(ablation_dir / "predictions.json.gz")
+    ablation_tables = tables(evaluation, labels, ablation)
+    for name, values in ablation_tables.items():
+        compare_rows(values, ablation_dir / (name + ".csv"))
+    exact_maps = sum(reference_matches(ablation[m], predictions[m]) for m in VALIDATION + TEST)
     return dict(package_files_checked=files, source_rows_checked=row_count, train_pools_checked=pools,
-                monthly_metrics_checked=len(validation)+len(test), selected_model=chosen["model_id"],
+                monthly_metrics_checked=len(validation)+len(test),
+                ablation_monthly_metrics_checked=sum(len(ablation_tables[name]) for name in ("validation_monthly", "test_monthly")),
+                ablation_exact_reference_score_maps=exact_maps, selected_model=chosen["model_id"],
                 new_model_fits=0, retrospective=True, actual_release_availability_certified=False)

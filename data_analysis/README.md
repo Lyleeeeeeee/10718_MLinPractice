@@ -1,6 +1,7 @@
 # Evaluation and verification
 
 - `pipeline.py`: prior-known-target training pools, feature assembly and fixed expanding-window fits.
+- `age_ablation.py`: fixed-model comparison of numeric, numeric + age, and numeric + age + SVD8.
 - `metrics.py`: common monthly ranking, binary Recall/Precision/NDCG, analytic random reference and validation-only selection.
 - `verify.py`: complete package inventory, independent threshold/label arithmetic, original candidate gates, temporal contracts, training memberships and saved-metric replay.
 - `io.py`: portable JSON/CSV helpers.

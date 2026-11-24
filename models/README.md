@@ -13,6 +13,8 @@ Both tree recipes use 100 trees, seven leaves, depth three, learning rate 0.03, 
 
 The compact five inputs are threshold margin, clickstream growth, pageview growth, traffic level and relative spread. Logistic uses twelve traffic/pageview/missingness columns plus the explicit threshold margin. The margin is `log1p(preceding count × target days / preceding days) - log1p(T)`, where T is the final loose event threshold. Semantic arms append eleven age/availability/text inputs. **The standalone momentum score is not an added learned-model feature.**
 
+For the selected pairwise recipe only, see the [supplementary age vs. text ablation](../results/age_ablation/README.md).
+
 ## Baselines
 
 - `current_volume`: rank the preceding full-month internal-link count.

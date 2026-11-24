@@ -22,8 +22,8 @@ def eligible(row):
                 and row["current_count"] / days(row["cutoff_month"]) <= row["U_count"] / days(row["target_month"])
                 and row["current_count"] <= row["current_precurrent_U"])
 
-def score_month(month, rows, labels, predictions):
-    assert set(predictions) == set(ORDER) - {"random_expected"}
+def score_month(month, rows, labels, predictions, *, order=ORDER):
+    assert set(predictions) == set(order) - {"random_expected"}
     keys = {r["key"] for r in rows}
     known = [r for r in rows if labels[r["key"]]["known"]]
     n = len(known)
@@ -31,7 +31,7 @@ def score_month(month, rows, labels, predictions):
     k = min(50, n)
     idcg = math.fsum(1 / math.log2(i + 2) for i in range(min(k, events)))
     result = []
-    for name in ORDER:
+    for name in order:
         if name == "random_expected":
             hits = k * events / n
             dcg = events / n * math.fsum(1 / math.log2(i + 2) for i in range(k))
@@ -47,9 +47,9 @@ def score_month(month, rows, labels, predictions):
                            precision_at_50=hits/k, ndcg_at_50=dcg/idcg if idcg else None, dcg_at_50=dcg, idcg_at_50=idcg))
     return result
 
-def summarize(monthly):
+def summarize(monthly, *, order=ORDER):
     result = []
-    for name in ORDER:
+    for name in order:
         rows = [r for r in monthly if r["model_id"] == name]
         events, hits, slots = (math.fsum(r[key] for r in rows) for key in ["events", "hits_at_50", "selected"])
         recall = [r["recall_at_50"] for r in rows if r["recall_at_50"] is not None]
